@@ -1,0 +1,19 @@
+{
+  "name": "ngx-prismic",
+  "version": "0.1.0",
+  "ngPackage": {
+    "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+    "src": ".",
+    "dest": "../dist/lib",
+    "workingDirectory": ".ng_build",
+    "lib": {
+      "entryFile": "./public_api.ts"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "~7.2.0",
+    "@angular/core": "~7.2.0",
+    "prismic-dom": "^2.1.0",
+    "prismic-javascript": "^2.0.1"
+  }
+}
