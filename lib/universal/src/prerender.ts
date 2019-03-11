@@ -11,6 +11,7 @@ import { join } from 'path';
 // Internal
 import { PrerenderConfig, DEFAULT_EXTRA_OPTIONS } from './prerender.model';
 import { getRoutes } from './routes';
+import { generateSitemap } from './sitemap';
 
 /**
  * Use this function to prerender your angular app according
@@ -51,6 +52,12 @@ export async function prerenderApplication(config: PrerenderConfig) {
         ]
       });
       writeFileSync(join(fullPath, 'index.html'), html);
-      config.extras.logFunc(`[Prerender] Rendered ${route}`);
+      config.extras.logFunc(`Rendered ${route}`);
+    }
+
+    // Generate sitemaps if configured
+    if (config.sitemapConfig) {
+      config.extras.logFunc(`Generating sitemap ...`);
+      await generateSitemap(config.sitemapConfig, routes, BROWSER_FOLDER);
     }
 }

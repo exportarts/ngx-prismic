@@ -31,11 +31,13 @@
       "entryFile": "./public_api.ts"
     },
     "whitelistedNonPeerDependencies": [
-      "mkdir-recursive"
+      "mkdir-recursive",
+      "sitemap"
     ]
   },
   "dependencies": {
-    "mkdir-recursive": "^0.4.0"
+    "mkdir-recursive": "^0.4.0",
+    "sitemap": "^2.1.0"
   },
   "peerDependencies": {
     "@angular/common": "~7.2.0",
