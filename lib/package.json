@@ -1,6 +1,6 @@
 {
   "name": "ngx-prismic",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "ngPackage": {
     "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
     "src": ".",
