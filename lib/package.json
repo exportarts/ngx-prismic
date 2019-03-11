@@ -29,11 +29,20 @@
     "dest": "../dist/lib",
     "lib": {
       "entryFile": "./public_api.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": [
+      "mkdir-recursive"
+    ]
+  },
+  "dependencies": {
+    "mkdir-recursive": "^0.4.0"
   },
   "peerDependencies": {
     "@angular/common": "~7.2.0",
     "@angular/core": "~7.2.0",
+    "@angular/http": "^7.2.8",
+    "@angular/platform-server": "^7.2.8",
+    "@nguniversal/module-map-ngfactory-loader": "^7.1.1",
     "prismic-dom": "^2.1.0",
     "prismic-javascript": "^2.0.1"
   }

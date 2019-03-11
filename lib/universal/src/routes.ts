@@ -1,4 +1,5 @@
 import { getPrismicUids } from './prismic-uids';
+import { DEFAULT_EXTRA_OPTIONS } from './prerender.model';
 
 /**
  * Defines the relationship between a Prismic custom type
@@ -34,21 +35,13 @@ export interface RouteConfig {
     };
 }
 
-export interface RoutesConfigExtraOptions {
-    logFunc?: (message: string) => any;
-}
-
-const DEFAULT_ROUTES_CONFIG_EXTRA_OPTIONS: RoutesConfigExtraOptions = {
-    logFunc: (message: string) => console.log(`[ngx-prismic] ${message}`)
-}
-
 /**
  * Use this function to get all routes inside the Angular application.
  * Routes can be static or dependend on CMS-content from Prismic.
  * 
  * @param config Configuration to resolve and return all routes
  */
-export async function getRoutes(config: RouteConfig, options = DEFAULT_ROUTES_CONFIG_EXTRA_OPTIONS): Promise<string[]> {
+export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPTIONS): Promise<string[]> {
     options.logFunc('Starting to collect routes\n');
 
     const routes = [...config.staticRoutes];
