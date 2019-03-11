@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import ResolvedApi, { QueryOptions } from 'prismic-javascript/d.ts/ResolvedApi';
 import { iif, Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { TypedApiSearchResponse } from '../../models/api.model';
+import { TypedApiSearchResponse } from './api.model';
 import { PrismicServiceConfig, PrismicServiceConfigProvider } from './prismic-service.config';
 
 /**
