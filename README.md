@@ -1,5 +1,7 @@
 # ngx-prismic
 
+[![npm](https://img.shields.io/npm/v/ngx-prismic.svg?style=flat-square)](https://www.npmjs.com/package/ngx-prismic)
+
 This project is intended to provide easier integration of
 [prismic.io](https://prismic.io) into Angular Projects.
 
