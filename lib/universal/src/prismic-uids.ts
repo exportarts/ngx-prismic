@@ -5,6 +5,8 @@ let _api: ResolvedApi;
 /**
  * Helper to get a reference to the prismic API.
  * If more than one page must be loaded, this avoids redundant calls.
+ * 
+ * @param prismicUrl The Prismic API URL (v2 only)
  */
 async function getApi(prismicUrl: string): Promise<ResolvedApi> {
   if (!_api) {
@@ -17,8 +19,9 @@ async function getApi(prismicUrl: string): Promise<ResolvedApi> {
  * Recursively loads all available UIDs for a specific docType
  * until all results in Prismic are returned.
  * 
+ * @param prismicUrl The Prismic API URL (v2 only)
  * @param docType The API-name of the document type to fetch
- * @param page (only for internal recursive calls, only call this function with one argument)
+ * @param page (only for internal recursive calls, only call this function with the first two arguments)
  */
 export async function getPrismicUids(prismicUrl: string, docType: string, page = 1): Promise<string[]> {
   const uids: string[] = [];

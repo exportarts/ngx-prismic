@@ -1,4 +1,2 @@
-export { RouteConfig, getRoutes } from './prerender/routes';
-export { log } from './utils/log';
-export { mkDirSyncRecursively } from './utils/mkdir-recursively';
-export { getPrismicUids } from './utils/prismic-uids';
+export { RouteConfig, getRoutes } from './routes';
+export { getPrismicUids } from './prismic-uids';
