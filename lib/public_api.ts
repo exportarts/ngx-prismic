@@ -1,3 +1,3 @@
-export * from './src/models';
-export * from './src/renderer';
-export * from './src/prismic-client';
+export * from './src/models/index';
+export * from './src/renderer/index';
+export * from './src/prismic-client/index';

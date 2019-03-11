@@ -1,26 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import ResolvedApi, { QueryOptions } from 'prismic-javascript/d.ts/ResolvedApi';
 import { iif, Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { TypedApiSearchResponse } from '../../models/api.model';
-
-export interface PrismicServiceConfig {
-  prismicUrl: string;
-}
+import { PrismicServiceConfig, PrismicServiceConfigProvider } from './prismic-service.config';
 
 /**
  * Compiler-Flags:
  * - @dynamic (Allow lambda functions)
  */
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class PrismicService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly config: PrismicServiceConfig
+    @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig
   ) {}
 
   private _api: ResolvedApi;
