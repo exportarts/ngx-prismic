@@ -1,4 +1,5 @@
-import { RouteConfig } from './routes';
+import { RouteConfig } from './routes.model';
+import { SitemapConfig } from './sitemap.model';
 
 export interface PrerenderConfig {
     routeConfig: RouteConfig;
@@ -14,6 +15,7 @@ export interface PrerenderConfig {
         AppServerModuleNgFactory: any;
         LAZY_MODULE_MAP: any;
     }
+    sitemapConfig?: SitemapConfig;
     extras?: NgxPrismicExtraOptions;
 }
 
