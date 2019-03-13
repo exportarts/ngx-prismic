@@ -1,24 +1,22 @@
 import { getPrismicUids } from './prismic-uids';
-import { DEFAULT_EXTRA_OPTIONS } from './prerender.model';
-import { RouteConfig } from './routes.model';
+import { RouteConfig, DEFAULT_EXTRA_OPTIONS } from './routes.model';
 
 /**
- * Use this function to get all routes inside the Angular application.
- * Routes can be static or dependend on CMS-content from Prismic.
+ * Use this function to get all routes inside the Angular application
+ * which dependend on CMS-content from Prismic.
  * 
  * @param config Configuration to resolve and return all routes
  */
 export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPTIONS): Promise<string[]> {
     options.logFunc('Starting to collect routes\n');
 
-    const routes = [...config.staticRoutes];
-    options.logFunc(`Found ${config.staticRoutes.length} static routes`);
+    const routes = [];
 
-    for (const routeConfig of config.prismic.dynamicRoutes) {
-        const uids = await getPrismicUids(config.prismic.apiUrl, routeConfig.documentType);
-        const mappedRoutes = uids.map(uid => routeConfig.uidMappingFunc(uid));
+    for (const docTypeConfig of config.docTypeConfigs) {
+        const uids = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType);
+        const mappedRoutes = uids.map(uid => docTypeConfig.uidMappingFunc(uid));
         routes.push(...mappedRoutes);
-        options.logFunc(`Found ${mappedRoutes.length} routes for document type "${routeConfig.documentType}"`);
+        options.logFunc(`Found ${mappedRoutes.length} routes for document type "${docTypeConfig.documentType}"`);
     }
 
     options.logFunc(`Found ${routes.length} total routes\n`);

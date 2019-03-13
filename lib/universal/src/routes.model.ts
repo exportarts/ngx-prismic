@@ -2,7 +2,7 @@
  * Defines the relationship between a Prismic custom type
  * and the associated path inside the Angular application.
  */
-interface DynamicRouteConfig {
+export interface DocTypeConfig {
     /**
      * API-name of the Custom Type.
      */
@@ -16,18 +16,19 @@ interface DynamicRouteConfig {
 
 export interface RouteConfig {
     /**
-     * An array of static routes to include.
-     * All Routes must be absolute (start with '/').
+     * Your repository's API URL.
+     * You can find this string at Settings > API & Security > API Endpoint.
+     * 
+     * Please note that only Prismic API v2 is supported.
      */
-    staticRoutes: string[],
-    prismic: {
-        /**
-         * Your repository's API URL.
-         * You can find this string at Settings > API & Security > API Endpoint.
-         * 
-         * Please note that only Prismic API v2 is supported.
-         */
-        apiUrl: string;
-        dynamicRoutes: DynamicRouteConfig[];
-    };
+    prismicApiUrl: string;
+    docTypeConfigs: DocTypeConfig[];
+}
+
+export interface NgxPrismicExtraOptions {
+    logFunc?: (message: string) => any;
+}
+
+export const DEFAULT_EXTRA_OPTIONS: NgxPrismicExtraOptions = {
+    logFunc: (message: string) => console.log(`[ngx-prismic] ${message}`)
 }
