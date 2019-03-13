@@ -1,2 +1,2 @@
 export { getRoutes } from './routes';
-export { RouteConfig, DocTypeConfig as DynamicRouteConfig, NgxPrismicExtraOptions } from './routes.model';
+export { RouteConfig, DocTypeConfig, NgxPrismicExtraOptions } from './routes.model';
