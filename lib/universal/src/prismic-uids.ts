@@ -1,5 +1,6 @@
 import * as Prismic from 'prismic-javascript';
-import ResolvedApi from 'prismic-javascript/d.ts/ResolvedApi';
+import ResolvedApi, { QueryOptions } from 'prismic-javascript/d.ts/ResolvedApi';
+import { Document } from 'prismic-javascript/d.ts/documents';
 
 let _api: ResolvedApi;
 /**
@@ -16,6 +17,22 @@ async function getApi(prismicUrl: string): Promise<ResolvedApi> {
 };
 
 /**
+ * A Prismic Document without the actual data.
+ */
+export type DocumentMetadata = Pick<Document,
+  'id' |
+  'uid' |
+  'type' |
+  'href' |
+  'tags' |
+  'slugs' |
+  'lang' |
+  'alternate_languages' |
+  'first_publication_date' |
+  'last_publication_date'
+>;
+
+/**
  * Recursively loads all available UIDs for a specific docType
  * until all results in Prismic are returned.
  * 
@@ -23,16 +40,24 @@ async function getApi(prismicUrl: string): Promise<ResolvedApi> {
  * @param docType The API-name of the document type to fetch
  * @param page (only for internal recursive calls, only call this function with the first two arguments)
  */
-export async function getPrismicUids(prismicUrl: string, docType: string, page = 1): Promise<string[]> {
-  const uids: string[] = [];
+export async function getPrismicUids(prismicUrl: string, docType: string, page = 1): Promise<DocumentMetadata[]> {
+  const metaDocuments: DocumentMetadata[] = [];
   const api = await getApi(prismicUrl);
 
-  const response = await api.query(Prismic.Predicates.at('document.type', docType), { page, pageSize: 100 });
-  uids.push(...response.results.map(result => result.uid));
+  const options: QueryOptions = {
+    page,
+    pageSize: 100,
+    fetch: null // Don't query document data
+  };
+  const response = await api.query(Prismic.Predicates.at('document.type', docType), options);
+  metaDocuments.push(...response.results.map(result => {
+    delete result.data;
+    return result as DocumentMetadata;
+  }));
 
   if (page < response.total_pages) {
-    uids.push(...await getPrismicUids(prismicUrl, docType, ++page));
+    metaDocuments.push(...await getPrismicUids(prismicUrl, docType, ++page));
   }
 
-  return uids;
+  return metaDocuments;
 }

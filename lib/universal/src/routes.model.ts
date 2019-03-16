@@ -1,3 +1,5 @@
+import { DocumentMetadata } from './prismic-uids';
+
 /**
  * Defines the relationship between a Prismic custom type
  * and the associated path inside the Angular application.
@@ -23,6 +25,17 @@ export interface RouteConfig {
      */
     prismicApiUrl: string;
     docTypeConfigs: DocTypeConfig[];
+}
+
+export interface PrismicRoute {
+    /**
+     * The mapped route.
+     */
+    route: string;
+    /**
+     * Additional metadata.
+     */
+    meta: DocumentMetadata;
 }
 
 export interface NgxPrismicExtraOptions {

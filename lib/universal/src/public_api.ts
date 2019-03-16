@@ -1,2 +1,3 @@
 export { getRoutes } from './routes';
-export { RouteConfig, DocTypeConfig, NgxPrismicExtraOptions } from './routes.model';
+export { PrismicRoute, RouteConfig, DocTypeConfig, NgxPrismicExtraOptions } from './routes.model';
+export { DocumentMetadata } from './prismic-uids';
