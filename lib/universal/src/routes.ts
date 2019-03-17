@@ -1,5 +1,5 @@
 import { getPrismicUids } from './prismic-uids';
-import { RouteConfig, DEFAULT_EXTRA_OPTIONS } from './routes.model';
+import { RouteConfig, DEFAULT_EXTRA_OPTIONS, PrismicRoute } from './routes.model';
 
 /**
  * Use this function to get all routes inside the Angular application
@@ -7,18 +7,24 @@ import { RouteConfig, DEFAULT_EXTRA_OPTIONS } from './routes.model';
  * 
  * @param config Configuration to resolve and return all routes
  */
-export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPTIONS): Promise<string[]> {
+export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPTIONS): Promise<PrismicRoute[]> {
     options.logFunc('Starting to collect routes\n');
 
-    const routes = [];
+    const prismicRoutes: PrismicRoute[] = [];
 
     for (const docTypeConfig of config.docTypeConfigs) {
-        const uids = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType);
-        const mappedRoutes = uids.map(uid => docTypeConfig.uidMappingFunc(uid));
-        routes.push(...mappedRoutes);
+        const metaDocuments = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType);
+        const mappedRoutes = metaDocuments.map(doc => {
+            const prismicRoute: PrismicRoute = {
+                route: docTypeConfig.uidMappingFunc(doc.uid),
+                meta: doc
+            };
+            return prismicRoute;
+        });
+        prismicRoutes.push(...mappedRoutes);
         options.logFunc(`Found ${mappedRoutes.length} routes for document type "${docTypeConfig.documentType}"`);
     }
 
-    options.logFunc(`Found ${routes.length} total routes\n`);
-    return Promise.resolve(routes);
+    options.logFunc(`Found ${prismicRoutes.length} total routes\n`);
+    return Promise.resolve(prismicRoutes);
 };
