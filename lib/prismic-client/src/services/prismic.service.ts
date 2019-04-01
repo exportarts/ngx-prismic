@@ -21,6 +21,8 @@ export class PrismicService {
     @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig
   ) {}
 
+  private cache = new Map<string, TypedApiSearchResponse<any>>();
+
   private _api: ResolvedApi;
 
   private get api(): Observable<ResolvedApi> {
@@ -61,8 +63,16 @@ export class PrismicService {
         const ref = api.refs.find(r => r.isMasterRef).ref;
         const encodedQuery = PrismicService.encodePredicates(predicates);
         const encodedOptions = PrismicService.encodeOptions(options);
-        const url = `${this.config.prismicUrl}/documents/search?ref=${ref}${encodedQuery}${encodedOptions}`;
-        return this.http.get<TypedApiSearchResponse<T>>(url);
+
+        const encodedRefQueryAndOptions = `${ref}${encodedQuery}${encodedOptions}`;
+        if (this.cache.has(encodedRefQueryAndOptions)) {
+          return of(this.cache.get(encodedRefQueryAndOptions) as TypedApiSearchResponse<T>);
+        }
+
+        const url = `${this.config.prismicUrl}/documents/search?ref=${encodedRefQueryAndOptions}`;
+        return this.http.get<TypedApiSearchResponse<T>>(url).pipe(
+          tap(response => this.cache.set(encodedRefQueryAndOptions, response))
+        );
       })
     );
   }
