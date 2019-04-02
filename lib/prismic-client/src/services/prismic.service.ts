@@ -6,6 +6,7 @@ import { iif, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { TypedApiSearchResponse, TypedDocument } from './api.model';
 import { PrismicServiceConfig, PrismicServiceConfigProvider } from './prismic-service.config';
+import { encodeOptions, encodePredicates } from './encode';
 
 /**
  * Compiler-Flags:
@@ -35,19 +36,6 @@ export class PrismicService {
     );
   }
 
-  private static encodePredicates(predicates: string[]): string {
-    return predicates.map(p => `&q=[${encodeURIComponent(p)}]`).join(',');
-  }
-
-  private static encodeOptions(options: QueryOptions): string {
-    return Object.keys(options).map(key => {
-      if (options[key] instanceof Array) {
-        options[key] = (options[key] as any[]).join(',')
-      }
-      return `&${key}=${options[key]}`;
-    }).join('');
-  }
-
   /**
    * Query the API with the specified list of predicates and query options.
    * Reference about the different options can be found in Prismic's docs:
@@ -61,17 +49,17 @@ export class PrismicService {
     return this.api.pipe(
       switchMap(api => {
         const ref = api.refs.find(r => r.isMasterRef).ref;
-        const encodedQuery = PrismicService.encodePredicates(predicates);
-        const encodedOptions = PrismicService.encodeOptions(options);
+        const encodedPredicates = encodePredicates(predicates);
+        const encodedOptions = encodeOptions(options);
 
-        const encodedRefQueryAndOptions = `${ref}${encodedQuery}${encodedOptions}`;
-        if (this.cache.has(encodedRefQueryAndOptions)) {
-          return of(this.cache.get(encodedRefQueryAndOptions) as TypedApiSearchResponse<T>);
+        const encodedRefPredicatesAndOptions = `${ref}${encodedPredicates}${encodedOptions}`;
+        if (this.cache.has(encodedRefPredicatesAndOptions)) {
+          return of(this.cache.get(encodedRefPredicatesAndOptions) as TypedApiSearchResponse<T>);
         }
 
-        const url = `${this.config.prismicUrl}/documents/search?ref=${encodedRefQueryAndOptions}`;
+        const url = `${this.config.prismicUrl}/documents/search?ref=${encodedRefPredicatesAndOptions}`;
         return this.http.get<TypedApiSearchResponse<T>>(url).pipe(
-          tap(response => this.cache.set(encodedRefQueryAndOptions, response))
+          tap(response => this.cache.set(encodedRefPredicatesAndOptions, response))
         );
       })
     );

@@ -29,7 +29,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "build:lib": "ng-packagr -p ./lib/package.json"
+    "prebuild:lib": "npm run test:lib",
+    "build:lib": "ng-packagr -p ./lib/package.json",
+    "test:lib": "jest --rootDir lib"
   },
   "private": true,
   "dependencies": {
@@ -52,13 +54,17 @@
     "@angular/compiler-cli": "~7.2.0",
     "@angular/http": "^7.2.8",
     "@angular/language-service": "~7.2.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "^24.0.11",
     "@types/node": "~8.9.4",
     "chalk": "^2.4.2",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^24.6.0",
     "karma": "~3.1.1",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
