@@ -46,3 +46,8 @@ export interface Heading5 extends TextNode {
 export interface Heading6 extends TextNode {
   type: 'heading6';
 }
+
+export type Select<T extends string> = {
+  type: 'Select',
+  value: T;
+}
