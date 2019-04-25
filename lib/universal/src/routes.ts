@@ -9,11 +9,12 @@ import { RouteConfig, DEFAULT_EXTRA_OPTIONS, PrismicRoute } from './routes.model
  */
 export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPTIONS): Promise<PrismicRoute[]> {
     options.logFunc('Starting to collect routes\n');
+    config.includeDocumentData = config.includeDocumentData || false;
 
     const prismicRoutes: PrismicRoute[] = [];
 
     for (const docTypeConfig of config.docTypeConfigs) {
-        const metaDocuments = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType);
+        const metaDocuments = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType, config.includeDocumentData);
         const mappedRoutes = metaDocuments.map(doc => {
             const prismicRoute: PrismicRoute = {
                 route: docTypeConfig.uidMappingFunc(doc.uid),

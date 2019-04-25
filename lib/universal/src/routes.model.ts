@@ -1,4 +1,5 @@
 import { DocumentMetadata } from './prismic-uids';
+import { Document } from 'prismic-javascript/d.ts/documents';
 
 /**
  * Defines the relationship between a Prismic custom type
@@ -25,6 +26,11 @@ export interface RouteConfig {
      */
     prismicApiUrl: string;
     docTypeConfigs: DocTypeConfig[];
+    /**
+     * Set this option to true to have the original Prismic document
+     * returned in the PrismicRoute's meta attribute.
+     */
+    includeDocumentData?: boolean;
 }
 
 export interface PrismicRoute {
@@ -35,7 +41,7 @@ export interface PrismicRoute {
     /**
      * Additional metadata.
      */
-    meta: DocumentMetadata;
+    meta: DocumentMetadata | Document;
 }
 
 export interface NgxPrismicExtraOptions {
