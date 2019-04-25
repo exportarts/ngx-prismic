@@ -38,26 +38,36 @@ export type DocumentMetadata = Pick<Document,
  * 
  * @param prismicUrl The Prismic API URL (v2 only)
  * @param docType The API-name of the document type to fetch
- * @param page (only for internal recursive calls, only call this function with the first two arguments)
+ * @param includeData Whether to include the full document data, nut just metadata
+ * @param page (only for internal recursive calls, only call this function with the first two/three arguments)
  */
-export async function getPrismicUids(prismicUrl: string, docType: string, page = 1): Promise<DocumentMetadata[]> {
-  const metaDocuments: DocumentMetadata[] = [];
+export async function getPrismicUids(prismicUrl: string, docType: string, includeData = false, page = 1): Promise<(DocumentMetadata | Document)[]> {
+  const documents: (DocumentMetadata | Document)[] = [];
   const api = await getApi(prismicUrl);
 
   const options: QueryOptions = {
     page,
     pageSize: 100,
-    fetch: null // Don't query document data
+    fetch: null // Don't query document data by default
   };
+
+  if (includeData) {
+    delete options.fetch;
+  }
+
   const response = await api.query(Prismic.Predicates.at('document.type', docType), options);
-  metaDocuments.push(...response.results.map(result => {
+  documents.push(...response.results.map(result => {
+    if (includeData) {
+      return result;
+    }
+
     delete result.data;
     return result as DocumentMetadata;
   }));
 
   if (page < response.total_pages) {
-    metaDocuments.push(...await getPrismicUids(prismicUrl, docType, ++page));
+    documents.push(...await getPrismicUids(prismicUrl, docType, includeData, ++page));
   }
 
-  return metaDocuments;
+  return documents;
 }
