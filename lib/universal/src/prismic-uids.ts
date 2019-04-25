@@ -47,12 +47,11 @@ export async function getPrismicUids(prismicUrl: string, docType: string, includ
 
   const options: QueryOptions = {
     page,
-    pageSize: 100,
-    fetch: null // Don't query document data by default
+    pageSize: 100
   };
 
-  if (includeData) {
-    delete options.fetch;
+  if (!includeData) {
+    options.fetch = null; // Don't query document data by default
   }
 
   const response = await api.query(Prismic.Predicates.at('document.type', docType), options);
