@@ -9,6 +9,21 @@ import { PrismicServiceConfig, PrismicServiceConfigProvider } from './prismic-se
 import { encodeOptions, encodePredicates } from './encode';
 
 /**
+ * A function that can be used to map a value of
+ * type A to a value of type B inside an rxjs-map function.
+ * 
+ * Type B is optional, so the mapping can happen inside the
+ * same type. An example use case is to set default values
+ * for empty properties of A, then return it without changing the type.
+ */
+export type ProjectorFunc<A, B = A> = (value: A, index?: number) => B;
+/**
+ * A default implementation of {@link ProjectorFunc} which
+ * performs no modification on the value and just returns it.
+ */
+const noopProjectorFunc: ProjectorFunc<any> = v => v;
+
+/**
  * Compiler-Flags:
  * - @dynamic (Allow lambda functions)
  */
@@ -42,10 +57,19 @@ export class PrismicService {
    * - https://prismic.io/docs/javascript/query-the-api/query-predicates-reference
    * - https://prismic.io/docs/javascript/query-the-api/query-options-reference
    * 
+   * A `mappingFunc` can be given to perform changes on the response object before caching
+   * is applied (for example setting of default/fallback values on empty properties).
+   * Using this function has the advantage of performing mapping only once on the initial call.
+   * 
    * @param predicates An array of predicate strings (Use the `Prismic.Predicates.*` methods)
    * @param options additional options
+   * @param mappingFunc a function to map the response object inside an rxjs-map
    */
-  query<T>(predicates: string[], options: QueryOptions = {}): Observable<TypedApiSearchResponse<T>> {
+  query<T, R = T>(
+      predicates: string[],
+      options: QueryOptions = {},
+      mappingFunc: ProjectorFunc<TypedApiSearchResponse<T>, TypedApiSearchResponse<R>> = noopProjectorFunc
+    ): Observable<TypedApiSearchResponse<R>> {
     return this.api.pipe(
       switchMap(api => {
         const ref = api.refs.find(r => r.isMasterRef).ref;
@@ -54,12 +78,13 @@ export class PrismicService {
 
         const encodedRefPredicatesAndOptions = `${ref}${encodedPredicates}${encodedOptions}`;
         if (this.cache.has(encodedRefPredicatesAndOptions)) {
-          return of(this.cache.get(encodedRefPredicatesAndOptions) as TypedApiSearchResponse<T>);
+          return of(this.cache.get(encodedRefPredicatesAndOptions) as TypedApiSearchResponse<R>);
         }
 
         const url = `${this.config.prismicUrl}/documents/search?ref=${encodedRefPredicatesAndOptions}`;
         return this.http.get<TypedApiSearchResponse<T>>(url).pipe(
-          tap(response => this.cache.set(encodedRefPredicatesAndOptions, response))
+          map(mappingFunc),
+          tap(response => this.cache.set(encodedRefPredicatesAndOptions, response)),
         );
       })
     );
@@ -71,13 +96,19 @@ export class PrismicService {
    * @param docType API-Name of the document-type
    * @param uid The document's UID
    * @param options additional options
+   * @param mappingFunc a function to map the response object inside an rxjs-map
    */
-  queryOne<T>(docType: string, uid: string, options: QueryOptions = {}): Observable<TypedDocument<T>> {
+  queryOne<T, R = T>(
+      docType: string,
+      uid: string,
+      options: QueryOptions = {},
+      mappingFunc: ProjectorFunc<TypedApiSearchResponse<T>, TypedApiSearchResponse<R>> = noopProjectorFunc
+    ): Observable<TypedDocument<R>> {
     const predicates = [
       Predicates.at(`my.${docType}.uid`, uid)
     ];
 
-    return this.query<T>(predicates, options).pipe(
+    return this.query<T, R>(predicates, options, mappingFunc).pipe(
       map(reponse => reponse.results[0])
     );
   }
