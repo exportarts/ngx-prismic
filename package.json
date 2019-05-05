@@ -29,8 +29,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "prebuild:lib": "npm run test:lib",
+    "prebuild:lib": "rm -rf dist && npm run test:lib",
     "build:lib": "ng-packagr -p ./lib/package.json",
+    "postbuild:lib": "cp README.md ./dist/lib/",
     "test:lib": "jest --rootDir lib"
   },
   "private": true,
