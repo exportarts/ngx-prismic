@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { RichText } from 'prismic-dom/dist/prismic-dom.min.js';
-
-// Todo: Find better solution for importing other sub-packages
-import { Paragraphs } from 'ngx-prismic/renderer';
+import { Paragraphs } from '../models/typography.model';
 
 /**
  * This pipe is used to render an array of Prismic Paragraphs

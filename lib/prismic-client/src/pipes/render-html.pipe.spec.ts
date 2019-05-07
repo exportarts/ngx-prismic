@@ -1,4 +1,5 @@
-import { Paragraphs, SpanType } from '../../../renderer/src/public_api';
+import { SpanType } from '../models/span.model';
+import { Paragraphs } from '../models/typography.model';
 import { RenderHtmlPipe } from './render-html.pipe';
 
 describe('RenderHtmlPipe', () => {
