@@ -27,12 +27,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest --rootDir lib",
     "lint": "ng lint",
-    "prebuild:lib": "rm -rf dist && npm run test:lib",
+    "prebuild:lib": "rm -rf dist && npm test",
     "build:lib": "ng-packagr -p ./lib/package.json",
-    "postbuild:lib": "cp README.md ./dist/lib/",
-    "test:lib": "jest --rootDir lib"
+    "postbuild:lib": "cp README.md ./dist/lib/"
   },
   "private": true,
   "dependencies": {
