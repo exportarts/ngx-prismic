@@ -8,7 +8,7 @@ import { Paragraphs } from '../../../renderer/src/models/typography.model';
  * 
  * @example
  * <!-- text is an array of paragraphs -->
- * <div [innerHTML]="doc.data.text | renderHtml"></div>
+ * <ng-container [innerHTML]="doc.data.text | renderHtml"></ng-container>
  */
 @Pipe({
   name: 'renderHtml'
