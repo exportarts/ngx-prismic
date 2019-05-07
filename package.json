@@ -1,6 +1,6 @@
 {
   "name": "ngx-prismic",
-  "version": "0.14.0",
+  "version": "1.0.0",
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
   "author": {
     "name": "Exportarts",
