@@ -27,12 +27,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest --rootDir lib",
     "lint": "ng lint",
-    "prebuild:lib": "rm -rf dist && npm run test:lib",
+    "prebuild:lib": "rm -rf dist && npm test",
     "build:lib": "ng-packagr -p ./lib/package.json",
-    "postbuild:lib": "cp README.md ./dist/lib/",
-    "test:lib": "jest --rootDir lib"
+    "postbuild:lib": "cp README.md ./dist/lib/"
   },
   "private": true,
   "dependencies": {
@@ -55,6 +54,7 @@
     "@angular/compiler-cli": "~7.2.0",
     "@angular/http": "^7.2.8",
     "@angular/language-service": "~7.2.0",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-typescript": "^7.3.3",
     "@types/jasmine": "~2.8.8",
