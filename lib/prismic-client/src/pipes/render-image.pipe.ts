@@ -23,11 +23,11 @@ export class RenderImagePipe implements PipeTransform {
      * @param caption optional <figcaption>
      */
     transform(image: Image, imgTitle?: string, imgClasses?: string, caption?: Paragraphs): string {
-        const classes = imgClasses ? `class="${imgClasses}"` : '';
-        const alt = image.alt ? `alt="${image.alt}"` : '';
-        const title = imgTitle ? `title="${imgTitle}"` : '';
-        const src = `src="${image.url}"`;
-        const img = `<img ${classes} ${alt} ${title} ${src}>`;
+        const classes = imgClasses ? ` class="${imgClasses}"` : '';
+        const alt = image.alt ? ` alt="${image.alt}"` : '';
+        const title = imgTitle ? ` title="${imgTitle}"` : '';
+        const src = ` src="${image.url}"`;
+        const img = `<img${classes}${alt}${title}${src}>`;
 
         if (caption) {
             return `<figure>${img}<figcaption>${RichText.asHtml(caption)}</figcaption></figure>`;
