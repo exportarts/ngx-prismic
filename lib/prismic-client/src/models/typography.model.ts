@@ -1,25 +1,21 @@
 import { Span } from './span.model';
 
-interface TextNode {
+export type TextNodeType = 
+  | 'paragraph'
+  | 'preformatted'
+  | 'heading1'
+  | 'heading2'
+  | 'heading3'
+  | 'heading4'
+  | 'heading5'
+  | 'heading6'
+  | 'o-list-item'
+  | 'list-item';
+
+export interface Paragraph {
   text: string;
   spans: Span[];
-}
-
-/**
- * @deprecated will be internalized in next major, use Paragraphs instead
- */
-export interface Paragraph extends TextNode {
-  type:
-    | 'paragraph'
-    | 'preformatted'
-    | 'heading1'
-    | 'heading2'
-    | 'heading3'
-    | 'heading4'
-    | 'heading5'
-    | 'heading6'
-    | 'o-list-item'
-    | 'list-item';
+  type: TextNodeType;
 }
 
 export type Paragraphs = Paragraph[];
@@ -27,42 +23,42 @@ export type Paragraphs = Paragraph[];
 /**
  * @deprecated will be internalized in next major, use Headings1 instead
  */
-export interface Heading1 extends TextNode {
+export interface Heading1 extends Paragraph {
   type: 'heading1';
 }
 
 /**
  * @deprecated will be internalized in next major, use Headings2 instead
  */
-export interface Heading2 extends TextNode {
+export interface Heading2 extends Paragraph {
   type: 'heading2';
 }
 
 /**
  * @deprecated will be internalized in next major, use Headings3 instead
  */
-export interface Heading3 extends TextNode {
+export interface Heading3 extends Paragraph {
   type: 'heading3';
 }
 
 /**
  * @deprecated will be internalized in next major, use Headings4 instead
  */
-export interface Heading4 extends TextNode {
+export interface Heading4 extends Paragraph {
   type: 'heading4';
 }
 
 /**
  * @deprecated will be internalized in next major, use Headings5 instead
  */
-export interface Heading5 extends TextNode {
+export interface Heading5 extends Paragraph {
   type: 'heading5';
 }
 
 /**
  * @deprecated will be internalized in next major, use Headings6 instead
  */
-export interface Heading6 extends TextNode {
+export interface Heading6 extends Paragraph {
   type: 'heading6';
 }
 
