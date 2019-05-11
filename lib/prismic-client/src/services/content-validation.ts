@@ -17,6 +17,15 @@ function isValidParagraphs(value: any): value is Paragraphs {
         && value[0].text.length > 0;
 }
 
+/**
+ * Check if the given content is valid according to the
+ * Prismic Types and if a usable value is set.
+ * 
+ * For example, this means that an Image needs an URL and
+ * that a Paragraph needs text which is not an empty string.
+ * 
+ * @param content the content to test
+ */
 export function isValidValue(content: Paragraphs | Image): boolean {
     if (!content) {
         return false;
@@ -26,6 +35,15 @@ export function isValidValue(content: Paragraphs | Image): boolean {
         || isValidParagraphs(content);
 }
 
+/**
+ * This method takes a Paragraph (or Heading1, Heading2, ...) and sets
+ * a fallback value for it. If the given value is not valid, the fallback
+ * value will be returned instead.
+ * 
+ * @param value The original value; will be returned if it is valid
+ * @param type Type of the TextNode (heading1, paragraph, ...)
+ * @param text The fallback text
+ */
 export function setDefaultParagraphs<T extends Paragraph>(value: T[], type: TextNodeType, text: string | string[]): T[] {
     if (isValidValue(value)) {
         return value;
@@ -47,6 +65,15 @@ function getDefaultParagraphs<T extends Paragraph>(type: TextNodeType, text: str
     });
 };
 
+/**
+ * This method takes an Image and sets and sets a fallback
+ * value for it. If the given value is not valid, the fallback
+ * value will be returned instead.
+ * 
+ * @param value The original image
+ * @param url Fallback URL
+ * @param alt Optional fallback alt-text
+ */
 export function setDefaultImage(value: Image, url: string, alt = ''): Image {
     if (isValidValue(value)) {
         return value;
