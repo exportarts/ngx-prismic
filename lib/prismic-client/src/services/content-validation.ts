@@ -36,7 +36,7 @@ export function isValidValue(content: Paragraphs | Image): boolean {
 }
 
 /**
- * This method takes a Paragraph (or Heading1, Heading2, ...) and sets
+ * This function takes a Paragraph (or Heading1, Heading2, ...) and sets
  * a fallback value for it. If the given value is not valid, the fallback
  * value will be returned instead.
  * 
@@ -51,7 +51,7 @@ export function setDefaultParagraphs<T extends Paragraph>(value: T[], type: Text
     return getDefaultParagraphs(type, text);
 }
 
-function getDefaultParagraphs<T extends Paragraph>(type: TextNodeType, text: string | string[]): T[] {
+export function getDefaultParagraphs<T extends Paragraph>(type: TextNodeType, text: string | string[]): T[] {
     if (!Array.isArray(text)) {
         text = [text];
     }
@@ -66,7 +66,7 @@ function getDefaultParagraphs<T extends Paragraph>(type: TextNodeType, text: str
 };
 
 /**
- * This method takes an Image and sets and sets a fallback
+ * This function takes an Image and sets and sets a fallback
  * value for it. If the given value is not valid, the fallback
  * value will be returned instead.
  * 
@@ -81,7 +81,7 @@ export function setDefaultImage(value: Image, url: string, alt = ''): Image {
     return getDefaultImage(url, alt);
 }
 
-function getDefaultImage(url: string, alt = ''): Image {
+export function getDefaultImage(url: string, alt = ''): Image {
     const image: Image = {
         url,
         alt,
