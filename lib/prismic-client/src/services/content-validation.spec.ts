@@ -1,7 +1,7 @@
-import { isValidValue, setDefaultParagraphs, setDefaultImage } from "./content-validation";
-import { Paragraphs } from '../models/typography.model';
 import { Image } from '../models/image.model';
 import { SpanType } from '../models/span.model';
+import { Paragraph, Paragraphs } from '../models/typography.model';
+import { isValidValue, setDefaultImage, setDefaultParagraphs } from "./content-validation";
 
 describe('Content Validation', () => {
 
@@ -70,7 +70,7 @@ describe('Content Validation', () => {
             const fallbackText = 'Some other text';
             expect(setDefaultParagraphs(original, 'paragraph', fallbackText)).toEqual(original);
         });
-        test('Should return the fallback value', () => {
+        test('Should return the fallback text', () => {
             const original: Paragraphs = [
                 {
                     spans: [],
@@ -87,6 +87,38 @@ describe('Content Validation', () => {
                 }
             ];
             expect(setDefaultParagraphs(original, 'paragraph', fallbackText)).toEqual(fallback);
+        });
+        test('Should return the fallback paragraphs', () => {
+            const original: Paragraphs = [
+                {
+                    spans: [],
+                    type: 'paragraph',
+                    text: ''
+                }
+            ];
+            const fallback: Paragraphs = [
+                {
+                    spans: [],
+                    type: 'paragraph',
+                    text: 'some text'
+                }
+            ];
+            expect(setDefaultParagraphs(original, 'paragraph', fallback)).toEqual(fallback);
+        });
+        test('Should return the fallback paragraph', () => {
+            const original: Paragraphs = [
+                {
+                    spans: [],
+                    type: 'paragraph',
+                    text: ''
+                }
+            ];
+            const fallback: Paragraph = {
+                spans: [],
+                type: 'paragraph',
+                text: 'some other text'
+            };
+            expect(setDefaultParagraphs(original, 'paragraph', fallback)).toEqual([fallback]);
         });
     });
 

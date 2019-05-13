@@ -10,11 +10,15 @@ function isValidImage(value: any): value is Image {
 
 function isValidParagraphs(value: any): value is Paragraphs {
     return Array.isArray(value)
-        && value[0]
-        && value[0].hasOwnProperty('text')
-        && value[0].hasOwnProperty('spans')
-        && value[0].hasOwnProperty('type')
-        && value[0].text.length > 0;
+        && value.every(item => isValidParagraph(item));
+}
+
+function isValidParagraph(value: any): value is Paragraph {
+    return value
+        && value.hasOwnProperty('text')
+        && value.hasOwnProperty('spans')
+        && value.hasOwnProperty('type')
+        && value.text.length > 0;
 }
 
 /**
@@ -26,12 +30,13 @@ function isValidParagraphs(value: any): value is Paragraphs {
  * 
  * @param content the content to test
  */
-export function isValidValue(content: Paragraphs | Image): boolean {
+export function isValidValue(content: Paragraph | Paragraphs | Image): boolean {
     if (!content) {
         return false;
     }
 
     return isValidImage(content)
+        || isValidParagraph(content)
         || isValidParagraphs(content);
 }
 
@@ -42,27 +47,46 @@ export function isValidValue(content: Paragraphs | Image): boolean {
  * 
  * @param value The original value; will be returned if it is valid
  * @param type Type of the TextNode (heading1, paragraph, ...)
- * @param text The fallback text
+ * @param input The fallback text or paragraph
  */
-export function setDefaultParagraphs<T extends Paragraph>(value: T[], type: TextNodeType, text: string | string[]): T[] {
+export function setDefaultParagraphs<T extends Paragraph = Paragraph>(value: T[], type: TextNodeType, input: string | string[] | T | T[]): T[] {
     if (isValidValue(value)) {
         return value;
     }
-    return getDefaultParagraphs(type, text);
+    return getDefaultParagraphs(type, input);
 }
 
-export function getDefaultParagraphs<T extends Paragraph>(type: TextNodeType, text: string | string[]): T[] {
-    if (!Array.isArray(text)) {
-        text = [text];
+export function getDefaultParagraphs<T extends Paragraph = Paragraph>(type: TextNodeType, input: string | string[] | T | T[]): T[] {
+    let paragraphs: Paragraph[];
+    if (Array.isArray(input)) {
+        if (typeof input[0] === 'string') {
+            paragraphs = (input as string[]).map(str => {
+                const paragraph: Paragraph = {
+                    text: str,
+                    spans: [],
+                    type
+                };
+                return paragraph;
+            });
+        }
+        if (typeof input[0] === 'object') {
+            paragraphs = input as Paragraphs;
+        }
+    } else {
+        if (typeof input === 'string') {
+            paragraphs = [
+                {
+                    text: input,
+                    type,
+                    spans: []
+                }
+            ];
+        }
+        if (typeof input === 'object') {
+            paragraphs = [ input ];
+        }
     }
-    return text.map(line => {
-        const paragraph: Paragraph = {
-            spans: [],
-            type: type,
-            text: line
-        };
-        return paragraph as T;
-    });
+    return paragraphs as T[];
 };
 
 /**
