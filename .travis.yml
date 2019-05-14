@@ -1,8 +1,7 @@
 language: node_js
 node_js:
   - "10"
-scripts:
-  - yarn install
+test:
   - yarn test:cov
 after_success:
   - yarn upload-cov
