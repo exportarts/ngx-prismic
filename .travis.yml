@@ -1,7 +1,7 @@
 language: node_js
+cache: yarn
 node_js:
   - "10"
-test:
-  - yarn test:cov
 after_success:
+  - yarn test:cov
   - yarn upload-cov
