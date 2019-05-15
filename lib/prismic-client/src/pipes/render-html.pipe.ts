@@ -7,7 +7,7 @@ import { Paragraphs } from '../models/typography.model';
  * The types of the arguments are highly dynamic and depend on the
  * content, therefore currently no types are provided.
  * 
- * It is best practive to override specific elements depending on the type.
+ * It is best practice to override specific elements depending on the type.
  * For all other elements, returning `null` keeps the default rendering
  * behaviour.
  * 
