@@ -6,6 +6,10 @@ import { isValidValue, setDefaultImage, setDefaultParagraphs } from "./content-v
 describe('Content Validation', () => {
 
     describe('isValidValue', () => {
+        test('No paragraphs', () => {
+            const value: Paragraphs = [];
+            expect(isValidValue(value)).toEqual(false);
+        });
         test('Valid paragraph', () => {
             const value: Paragraphs = [
                 {

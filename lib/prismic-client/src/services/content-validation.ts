@@ -10,6 +10,7 @@ function isValidImage(value: any): value is Image {
 
 function isValidParagraphs(value: any): value is Paragraphs {
     return Array.isArray(value)
+        && value.length > 0
         && value.every(item => isValidParagraph(item));
 }
 
