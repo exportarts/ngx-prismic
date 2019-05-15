@@ -1,6 +1,6 @@
 import { SpanType } from '../models/span.model';
 import { Paragraphs } from '../models/typography.model';
-import { RenderHtmlPipe } from './render-html.pipe';
+import { RenderHtmlPipe, HtmlSerializer } from './render-html.pipe';
 
 describe('RenderHtmlPipe', () => {
     let pipe: RenderHtmlPipe;
@@ -8,7 +8,7 @@ describe('RenderHtmlPipe', () => {
       pipe = new RenderHtmlPipe();
     });
 
-    describe('tranform()', () => {
+    describe('Without Resolver', () => {
         test('Simple paragraph without formatting', () => {
             const paragraphs: Paragraphs = [
                 {
@@ -136,5 +136,53 @@ describe('RenderHtmlPipe', () => {
             expect(rendered).toEqual('<p><a target="_blank" rel="noopener" href="https://google.com">Link</a> to Google</p>');
         });
     });
+
+    describe('With Resolver', () => {
+        test('Should override everything', () => {
+            const paragraphs: Paragraphs = [
+                {
+                    text: 'This is a simple paragraph',
+                    spans: [
+                        {
+                            start: 0,
+                            end: 10,
+                            type: SpanType.EM
+                        }
+                    ],
+                    type: 'paragraph'
+                }
+            ];
+            const serializer: HtmlSerializer = (type, element, content, children) => {
+                return 'static content';
+            }
+
+            const rendered = pipe.transform(paragraphs, serializer);
+            expect(rendered).toEqual('static content');
+        });
+
+        test('Should override certain spans', () => {
+            const paragraphs: Paragraphs = [
+                {
+                    text: 'This is a simple paragraph',
+                    spans: [
+                        {
+                            start: 0,
+                            end: 7,
+                            type: SpanType.EM
+                        }
+                    ],
+                    type: 'paragraph'
+                }
+            ];
+            const serializer: HtmlSerializer = (type, element, content, children) => {
+                switch (type) {
+                    case 'em': return `<span>${content}</span>`;
+                }
+            }
+
+            const rendered = pipe.transform(paragraphs, serializer);
+            expect(rendered).toEqual('<p><span>This is</span> a simple paragraph</p>');
+        });
+    })
     
 });
