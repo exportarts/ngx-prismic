@@ -17,7 +17,7 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
         const metaDocuments = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType, config.includeDocumentData);
         const mappedRoutes = metaDocuments.map(doc => {
             const prismicRoute: PrismicRoute = {
-                route: docTypeConfig.uidMappingFunc(doc.uid),
+                route: docTypeConfig.uidMappingFunc(doc.uid, doc),
                 meta: doc
             };
             return prismicRoute;
