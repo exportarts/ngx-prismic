@@ -13,8 +13,11 @@ export interface DocTypeConfig {
     /**
      * This function takes the UID of a Prismic document and
      * must return the absolute path to render this document.
+     * 
+     * Additionally, the complete document metadata can be used
+     * to determine the route.
      */
-    uidMappingFunc: (uid: string) => string;
+    uidMappingFunc: (uid: string, meta?: DocumentMetadata) => string;
 }
 
 export interface RouteConfig {
