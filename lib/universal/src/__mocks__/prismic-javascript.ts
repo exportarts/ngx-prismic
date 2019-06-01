@@ -40,7 +40,7 @@ function getApi(url): Promise<Partial<ResolvedApi>> {
                         alternate_languages: [
                             {
                                 id: 'XOlUGBAAAHc4IaRw',
-                                uid: 'home',
+                                uid: 'home-in-german',
                                 type: 'intro',
                                 lang: 'de-de'
                             }
@@ -50,7 +50,7 @@ function getApi(url): Promise<Partial<ResolvedApi>> {
                         last_publication_date: new Date().toISOString(),
                         href: 'https://google.com',
                         id: 'hiuads7623ohdas',
-                        uid: 'home',
+                        uid: 'home-in-english',
                         lang: 'en-gb',
                         slugs: [],
                         tags: [],
