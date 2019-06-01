@@ -17,7 +17,7 @@ export interface DocTypeConfig {
      * Additionally, the complete document metadata can be used
      * to determine the route.
      */
-    uidMappingFunc: (uid: string, meta?: DocumentMetadata) => string;
+    uidMappingFunc: (uid: string, meta?: DocumentMetadata) => string | string[];
 }
 
 export interface RouteConfig {
