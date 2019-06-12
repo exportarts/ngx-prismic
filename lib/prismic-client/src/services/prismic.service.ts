@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Predicates } from 'prismic-javascript';
 import ResolvedApi, { QueryOptions } from 'prismic-javascript/d.ts/ResolvedApi';
 import { iif, Observable, of } from 'rxjs';
@@ -24,6 +24,13 @@ export type ProjectorFunc<A, B = A> = (value: A, index?: number) => B;
 const noopProjectorFunc: ProjectorFunc<any> = v => v;
 
 /**
+ * Injection token to provide a spefific API Ref for the prismic api.
+ * 
+ * For instance, this can be used to provide a Preview Token.
+ */
+export const API_TOKEN = new InjectionToken<string>('API_TOKEN');
+
+/**
  * Compiler-Flags:
  * - @dynamic (Allow lambda functions)
  */
@@ -34,8 +41,11 @@ export class PrismicService {
 
   constructor(
     private readonly http: HttpClient,
-    @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig
-  ) {}
+    @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig,
+    @Inject(API_TOKEN) @Optional() private readonly apiToken: string
+  ) {
+    this.prefillWithApiToken();
+  }
 
   private cache = new Map<string, TypedApiSearchResponse<any>>();
 
@@ -111,6 +121,26 @@ export class PrismicService {
     return this.query<T, R>(predicates, options, mappingFunc).pipe(
       map(reponse => reponse.results[0])
     );
+  }
+
+  /**
+   * Checks if a custom token has been provided.
+   * If yes, it will be used as our API Ref.
+   */
+  private prefillWithApiToken() {
+    if (this.apiToken) {
+      this._api = {
+        refs: [
+          {
+            ref: this.apiToken,
+            id: this.apiToken,
+            isMasterRef: true,
+            label: 'Preview Token',
+            scheduledAt: ''
+          }
+        ]
+      } as ResolvedApi;
+    }
   }
 
 }
