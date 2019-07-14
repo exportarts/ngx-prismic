@@ -11,4 +11,6 @@ export * from './models/typography.model';
 export * from './models/video-embed.model';
 export * from './models/link.model';
 
+export * from './utils/resolver';
+
 export { HtmlSerializer } from './pipes/render-html.pipe';
