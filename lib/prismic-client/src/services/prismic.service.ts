@@ -4,9 +4,9 @@ import { Predicates } from 'prismic-javascript';
 import ResolvedApi, { QueryOptions } from 'prismic-javascript/d.ts/ResolvedApi';
 import { iif, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { encodeOptions, encodePredicates } from '../utils/encode';
 import { TypedApiSearchResponse, TypedDocument } from './api.model';
 import { PrismicServiceConfig, PrismicServiceConfigProvider } from './prismic-service.config';
-import { encodeOptions, encodePredicates } from './encode';
 
 /**
  * A function that can be used to map a value of
