@@ -14,3 +14,5 @@ export * from './models/link.model';
 export * from './utils/resolver';
 
 export { HtmlSerializer } from './pipes/render-html.pipe';
+
+export * from './guards/preview.guard';
