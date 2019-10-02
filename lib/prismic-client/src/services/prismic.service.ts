@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Predicates } from 'prismic-javascript';
 import ResolvedApi, { QueryOptions } from 'prismic-javascript/d.ts/ResolvedApi';
@@ -11,7 +11,7 @@ import { PrismicServiceConfig, PrismicServiceConfigProvider } from './prismic-se
 /**
  * A function that can be used to map a value of
  * type A to a value of type B inside an rxjs-map function.
- * 
+ *
  * Type B is optional, so the mapping can happen inside the
  * same type. An example use case is to set default values
  * for empty properties of A, then return it without changing the type.
@@ -25,7 +25,7 @@ const noopProjectorFunc: ProjectorFunc<any> = v => v;
 
 /**
  * Injection token to provide a spefific API Ref for the prismic api.
- * 
+ *
  * For instance, this can be used to provide a Preview Token.
  */
 export const API_TOKEN = new InjectionToken<string>('API_TOKEN');
@@ -38,12 +38,14 @@ export const API_TOKEN = new InjectionToken<string>('API_TOKEN');
   providedIn: 'root'
 })
 export class PrismicService {
+  private http: HttpClient;
 
   constructor(
-    private readonly http: HttpClient,
+    private httpBackend: HttpBackend,
     @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig,
     @Inject(API_TOKEN) @Optional() private readonly apiToken: string
   ) {
+    this.http = new HttpClient(this.httpBackend);
     this.prefillWithApiToken();
   }
 
@@ -66,11 +68,11 @@ export class PrismicService {
    * Reference about the different options can be found in Prismic's docs:
    * - https://prismic.io/docs/javascript/query-the-api/query-predicates-reference
    * - https://prismic.io/docs/javascript/query-the-api/query-options-reference
-   * 
+   *
    * A `mappingFunc` can be given to perform changes on the response object before caching
    * is applied (for example setting of default/fallback values on empty properties).
    * Using this function has the advantage of performing mapping only once on the initial call.
-   * 
+   *
    * @param predicates An array of predicate strings (Use the `Prismic.Predicates.*` methods)
    * @param options additional options
    * @param mappingFunc a function to map the response object inside an rxjs-map
