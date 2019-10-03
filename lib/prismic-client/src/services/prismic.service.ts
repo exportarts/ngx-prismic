@@ -38,10 +38,10 @@ export const API_TOKEN = new InjectionToken<string>('API_TOKEN');
   providedIn: 'root'
 })
 export class PrismicService {
-  private http: HttpClient;
+  private readonly http: HttpClient;
 
   constructor(
-    private httpBackend: HttpBackend,
+    private readonly httpBackend: HttpBackend,
     @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig,
     @Inject(API_TOKEN) @Optional() private readonly apiToken: string
   ) {
