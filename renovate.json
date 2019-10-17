@@ -6,5 +6,8 @@
   "labels": [
     "renovate"
   ],
-  "prCreation": "not-pending"
+  "prCreation": "not-pending",
+  "assignees": [
+    "evolkmann"
+  ]
 }
