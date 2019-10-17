@@ -10,6 +10,8 @@
   "assignees": [
     "evolkmann"
   ],
+  "stabilityDays": "3",
+  "masterIssue": true,
   "packageRules": [
     {
       "groupName": "definitelyTyped",
