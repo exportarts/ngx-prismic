@@ -9,5 +9,14 @@
   "prCreation": "not-pending",
   "assignees": [
     "evolkmann"
+  ],
+  "packageRules": [
+    {
+      "groupName": "definitelyTyped",
+      "packagePatterns": [
+        "^@types/"
+      ],
+      "automerge": true
+    }
   ]
 }
