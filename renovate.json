@@ -16,7 +16,8 @@
       "packagePatterns": [
         "^@types/"
       ],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "branch"
     }
   ]
 }
