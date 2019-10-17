@@ -18,6 +18,27 @@
       ],
       "automerge": true,
       "automergeType": "branch"
+    },
+    {
+      "groupName": "linters",
+      "packageNames": [
+        "tslint",
+        "codelyzer"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "groupName": "testPackages",
+      "packagePatterns": [
+        "^karma",
+        "^jasmine",
+        "^protractor$",
+        "^jest$",
+        "^codecov$"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
     }
   ]
 }
