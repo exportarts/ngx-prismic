@@ -3471,7 +3471,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-fetch@^2.2.0:
+cross-fetch@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-2.2.3.tgz#e8a0b3c54598136e037f8650f8e823ccdfac198e"
   integrity sha512-PrWWNH3yL2NYIb/7WF/5vFG3DCQiXDOVf8k3ijatbrtnwNuhMWLC7YF7uqf53tbTFDzHIUD8oITw4Bxt8ST3Nw==
@@ -7896,12 +7896,12 @@ prismic-helpers@^1.0.0:
   resolved "https://registry.yarnpkg.com/prismic-helpers/-/prismic-helpers-1.0.0.tgz#8337420cf187f55fb7b7a8be755523c8696fc329"
   integrity sha1-gzdCDPGH9V+3t6i+dVUjyGlvwyk=
 
-prismic-javascript@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-2.0.3.tgz#085da0c332e1903bd79a59b3afbb2b5d5c6fabbd"
-  integrity sha512-FODv9IYhwVBy5mSPsV5UcHw1nDDHFVe41vSCiJoM3Q3q2TbwAE5/Pz+jNoKUbIDQvVzNcGJKm1KAB8CkxT0qiA==
+prismic-javascript@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-2.1.1.tgz#fd82bd3a8882acc69c7b52c257340516dadec0d2"
+  integrity sha512-37j0Ypqwk/cM/x5VB1pdMS0I9umHIfQbB7TxiXeVjQjqz6zuZSdToYy67VB7lEDUWLZE4U4k1H2zTSH1QUFi+g==
   dependencies:
-    cross-fetch "^2.2.0"
+    cross-fetch "^2.2.3"
     promise-polyfill "8.0.0"
 
 prismic-richtext@^0.4.2:
