@@ -14,7 +14,7 @@ async function getApi(prismicUrl: string): Promise<ResolvedApi> {
     _api = await Prismic.getApi(prismicUrl);
   }
   return Promise.resolve(_api);
-};
+}
 
 /**
  * A Prismic Document without the actual data.

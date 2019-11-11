@@ -35,7 +35,7 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
 
     options.logFunc(`Found ${prismicRoutes.length} total routes\n`);
     return Promise.resolve(prismicRoutes);
-};
+}
 
 /**
  * Flattens an array up to the specified depth.

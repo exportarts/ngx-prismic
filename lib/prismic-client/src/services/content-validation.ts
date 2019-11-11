@@ -88,7 +88,7 @@ export function getDefaultParagraphs<T extends Paragraph = Paragraph>(type: Text
         }
     }
     return paragraphs as T[];
-};
+}
 
 /**
  * This function takes an Image and sets and sets a fallback

@@ -78,7 +78,7 @@ describe('getRoutes', () => {
         config.docTypeConfigs[0].uidMappingFunc = (uid, meta) => {
             const uids = [uid];
             (meta.alternate_languages as any).forEach(al => uids.push(al.uid))
-            return uids.map(uid => `/myroute/${uid}`);
+            return uids.map(_uid => `/myroute/${_uid}`);
         };
 
         const routes = await getRoutes(config, options);
