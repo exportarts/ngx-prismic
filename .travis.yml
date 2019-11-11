@@ -7,3 +7,10 @@ script:
 after_success:
   - yarn test:cov
   - yarn upload-cov
+  - sonar-scanner
+
+addons:
+  sonarcloud:
+    organization: "exportarts"
+    token:
+      secure: lIQhmvaayRTahff5mR6haB3atD+HVLH6n8vkDLpt4DHv1EwqL4UOm+gzM3WCAvliIhCyIwHTp/sRf99XtZzVgjqhv0lBEbl3LMcit+3zuMqMnSbaDxv7E+rKnMfyICp6LsVb8lA5AVkGTBPeB+M4GS//0oZHyMEVCB5rAPc7FgF+lOCryIQVb5fQnK6T1M5cin32ILD3V0vtUAXghWz2DlSXbFYhmVgLg8Xi4JnU9keIaX9AmhlgRAZlWCO2h2YrZ65Qj972Htoi2PyhUnhMvcQSEkT6z413lKKwn8aseQ0VPPlRTt0vPJg0i31oMpHEdU6NaandYI77YKbsuxj/FvZK4vt9K9DYNAKEgbiefH+ZGX3qLxRybA3X2FzJORwEeY02Q6UUDs0qPXtsb7iMgPAFzyeZ3io0jIAAhlqZEih66pdWyaiqT/yYW6/6X/qj4S+tbAl0Yc2W91RSq5iVdFHInPFnHtbIyTGV31EudqDZHz+3yOeKZB/29Y7QRscqF5hfb0lFEhMzgHjIpO7+RAsCgifdykpYCDsQoUPkDG9e2NYks/YYE/hr31o4bnJ5h9XirdxeQ0SdO3sixmV78kSKko4Nf5nVCJBPB7VrOCJJSAZDaj4u6wTVIi2CAsgs5MFmUJLon2guB52J2R3R6VAqPlCdMRKJEG+uyzpHnIY=
