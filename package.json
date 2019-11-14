@@ -79,7 +79,7 @@
     "prismic-dom": "2.1.0",
     "prismic-javascript": "2.1.1",
     "protractor": "5.4.2",
-    "ts-node": "8.4.1",
+    "ts-node": "8.5.0",
     "tsickle": "0.37.1",
     "tslint": "5.20.1",
     "typescript": "3.4.5"
