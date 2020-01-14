@@ -54,7 +54,7 @@
     "@angular-devkit/build-angular": "0.803.22",
     "@angular/cli": "8.3.22",
     "@angular/compiler-cli": "8.2.14",
-    "@angular/http": "7.2.15",
+    "@angular/http": "7.2.16",
     "@angular/language-service": "8.2.14",
     "@babel/core": "7.7.7",
     "@babel/plugin-proposal-decorators": "7.7.4",
