@@ -32,9 +32,9 @@
     }
   },
   "peerDependencies": {
-    "@angular/common": ">= 7.2.0 < 9",
-    "@angular/core": ">= 7.2.0 < 9",
-    "@angular/router": ">= 7.2.0 < 9",
+    "@angular/common": ">= 7.2.0 < 10",
+    "@angular/core": ">= 7.2.0 < 10",
+    "@angular/router": ">= 7.2.0 < 10",
     "prismic-dom": "^2.1.0",
     "prismic-javascript": "^2.0.1"
   }
