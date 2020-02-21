@@ -25,16 +25,15 @@
   ],
   "ngPackage": {
     "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
-    "src": "./",
     "dest": "../dist/lib",
     "lib": {
       "entryFile": "./public_api.ts"
     }
   },
   "peerDependencies": {
-    "@angular/common": ">= 7.2.0 < 9",
-    "@angular/core": ">= 7.2.0 < 9",
-    "@angular/router": ">= 7.2.0 < 9",
+    "@angular/common": ">=9",
+    "@angular/core": ">=9",
+    "@angular/router": ">=9",
     "prismic-dom": "^2.1.0",
     "prismic-javascript": "^2.0.1"
   }

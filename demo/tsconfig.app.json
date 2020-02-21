@@ -7,8 +7,11 @@
       "ngx-prismic": [ "../dist/lib" ]
     }
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "demo/**/*.d.ts"
   ]
 }
