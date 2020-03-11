@@ -76,7 +76,7 @@
     "karma-jasmine-html-reporter": "1.4.2",
     "ng-packagr": "^9.0.0",
     "prismic-dom": "2.1.0",
-    "prismic-javascript": "2.1.5",
+    "prismic-javascript": "2.2.0",
     "protractor": "5.4.2",
     "ts-node": "8.6.2",
     "tslint": "5.20.1",
