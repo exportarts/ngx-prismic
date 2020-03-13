@@ -47,8 +47,8 @@
     "@angular/router": "9.0.2",
     "core-js": "3.6.4",
     "rxjs": "6.5.4",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "tslib": "1.11.0",
+    "zone.js": "0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.900.5",
@@ -62,10 +62,10 @@
     "@types/jasmine": "3.4.6",
     "@types/jasminewd2": "2.0.8",
     "@types/jest": "25.1.4",
-    "@types/node": "^12.11.1",
+    "@types/node": "12.12.28",
     "chalk": "3.0.0",
     "codecov": "3.6.5",
-    "codelyzer": "^5.1.2",
+    "codelyzer": "5.2.1",
     "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",
     "jest": "25.1.0",
@@ -74,7 +74,7 @@
     "karma-coverage-istanbul-reporter": "2.1.1",
     "karma-jasmine": "3.1.1",
     "karma-jasmine-html-reporter": "1.5.2",
-    "ng-packagr": "^9.0.0",
+    "ng-packagr": "9.0.1",
     "prismic-dom": "2.1.0",
     "prismic-javascript": "2.2.0",
     "protractor": "5.4.3",
