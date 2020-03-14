@@ -69,7 +69,10 @@ export type Headings4 = Heading4[];
 export type Headings5 = Heading5[];
 export type Headings6 = Heading6[];
 
-export type Select<T extends string> = {
+/**
+ * @deprecated this is a type definition found in prismic api v1
+ */
+export type SelectV1<T extends string> = {
   type: 'Select',
   value: T;
 }

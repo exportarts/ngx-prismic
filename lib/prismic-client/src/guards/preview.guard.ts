@@ -3,7 +3,8 @@ import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, 
 import * as Prismic from 'prismic-javascript';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { PrismicServiceConfig, PrismicServiceConfigProvider, TypedDocument } from '../public_api';
+import { TypedDocument } from '../services/api.model';
+import { PrismicServiceConfig, PrismicServiceConfigProvider } from '../services/prismic-service.config';
 
 /**
  * This function takes a `TypedDocument` and must return the

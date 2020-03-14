@@ -1,13 +1,6 @@
 import ApiSearchResponse from 'prismic-javascript/d.ts/ApiSearchResponse';
 import { Document } from 'prismic-javascript/d.ts/documents';
-
-export interface LinkedDocument {
-  id: string;
-  tags: string[];
-  type: string;
-  slug: string;
-  lang: string;
-}
+import { ContentRelationship } from '../models/link.model';
 
 export interface AlternateLanguage {
   id: string;
@@ -23,7 +16,7 @@ export interface PrismicPageOptions {
 
 export interface TypedDocument<T> extends Omit<Document, 'alternate_languages'> {
   data: T;
-  linked_documents: LinkedDocument[];
+  linked_documents: ContentRelationship[];
   alternate_languages: AlternateLanguage[];
 }
 

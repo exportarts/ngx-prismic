@@ -10,6 +10,8 @@ export * from './models/span.model';
 export * from './models/typography.model';
 export * from './models/video-embed.model';
 export * from './models/link.model';
+export * from './models/geolocation.model';
+export * from './models/aliased-types.model';
 
 export * from './utils/resolver';
 
