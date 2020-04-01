@@ -9,6 +9,14 @@ describe('RenderHtmlPipe', () => {
     });
 
     describe('Without Resolver', () => {
+        test('Empty paragraphs', () => {
+            expect(pipe.transform([])).toEqual('');
+            expect(pipe.transform(undefined)).toEqual('');
+            expect(pipe.transform(null)).toEqual('');
+            // @ts-ignore
+            expect(pipe.transform()).toEqual('');
+        });
+
         test('Simple paragraph without formatting', () => {
             const paragraphs: Paragraphs = [
                 {
