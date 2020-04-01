@@ -44,6 +44,9 @@ export class RenderHtmlPipe implements PipeTransform {
    * @param htmlSerializer optional HtmlResolver which modifies the rendering of certain elements
    */
   transform(value: Paragraphs, htmlSerializer?: HtmlSerializer): string {
+    if (!(Array.isArray(value) && value.length > 0)) {
+      return '';
+    }
     return RichText.asHtml(value, undefined, htmlSerializer);
   }
 
