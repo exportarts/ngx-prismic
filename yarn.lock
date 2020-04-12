@@ -9197,10 +9197,10 @@ prismic-helpers@^1.0.0:
   resolved "https://registry.yarnpkg.com/prismic-helpers/-/prismic-helpers-1.0.0.tgz#8337420cf187f55fb7b7a8be755523c8696fc329"
   integrity sha1-gzdCDPGH9V+3t6i+dVUjyGlvwyk=
 
-prismic-javascript@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-2.7.0.tgz#bceb1fe8422065aba6052bcdfe2316ed7d644b4d"
-  integrity sha512-+twxreLvdJ5jfp9Y+3lNwsQdfpquFD4DHyiCfv5Nic16FoOTx6eM8k2fo4+Roblo5K6OVLq5737JdY0gbDyykA==
+prismic-javascript@2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-2.7.1.tgz#c009a6686a2410dcd49f3ccd537bcc40eb77dbca"
+  integrity sha512-4Mm2jBtQzjwN57est94wKFR6twvs3AhKx0BOR2IztUFyUEJhIp6iFHXNMQqTMP/q4cZ56hL0BtK5ecBkylNcyA==
   dependencies:
     cross-fetch "^2.2.3"
     promise-polyfill "8.0.0"
