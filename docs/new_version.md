@@ -4,9 +4,10 @@
 
 Change the version in `package.json` and `lib/package.json`.
 
-## 2. Build the library
+## 2. Build the library and update changelog
 
-Run `yarn build:lib`.
+- `yarn build:lib`
+- `yarn changelog`
 
 ## 3. Commit and Tag
 
