@@ -1,9 +1,9 @@
 export { PrismicClientModule } from './prismic-client.module';
 export { PrismicService, ProjectorFunc, API_TOKEN } from './services/prismic.service';
 export { PrismicServiceConfig, PrismicServiceConfigProvider } from './services/prismic-service.config';
-export * from './services/api.model';
 export * from './services/content-validation';
 
+export * from './models/api.model';
 export * from './models/image.model';
 export * from './models/slice.model';
 export * from './models/span.model';

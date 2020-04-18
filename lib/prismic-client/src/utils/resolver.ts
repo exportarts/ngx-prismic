@@ -1,7 +1,7 @@
 import { StateKey, TransferState } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { TypedApiSearchResponse, TypedDocument } from '../services/api.model';
+import { TypedApiSearchResponse, TypedDocument } from '../models/api.model';
 
 export class ResolverUtils {
 

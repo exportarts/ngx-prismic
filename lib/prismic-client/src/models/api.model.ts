@@ -1,6 +1,6 @@
 import ApiSearchResponse from 'prismic-javascript/d.ts/ApiSearchResponse';
 import { Document } from 'prismic-javascript/d.ts/documents';
-import { ContentRelationship } from '../models/link.model';
+import { ContentRelationship } from './link.model';
 
 export interface AlternateLanguage {
   id: string;
