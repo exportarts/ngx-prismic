@@ -63,7 +63,6 @@
     "@types/jasminewd2": "2.0.8",
     "@types/jest": "25.1.4",
     "@types/node": "12.12.28",
-    "chalk": "3.0.0",
     "codecov": "3.6.5",
     "codelyzer": "5.2.2",
     "jasmine-core": "3.5.0",
