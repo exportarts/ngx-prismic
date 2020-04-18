@@ -1,3 +1,12 @@
+# [1.10.0](https://github.com/exportarts/ngx-prismic/compare/v1.9.1...v1.10.0) (2020-04-18)
+
+
+### Features
+
+* add changelog ([fab8b8e](https://github.com/exportarts/ngx-prismic/commit/fab8b8e83fd19fafdf08c2555243132a754e1aaf))
+
+
+
 ## [1.9.1](https://github.com/exportarts/ngx-prismic/compare/v1.9.0...v1.9.1) (2020-04-01)
 
 
