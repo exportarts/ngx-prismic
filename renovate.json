@@ -4,7 +4,7 @@
   ],
   "commitMessagePrefix": "Renovate:",
   "labels": [
-    "renovate"
+    "dependencies"
   ],
   "prCreation": "not-pending",
   "assignees": [
