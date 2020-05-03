@@ -2,7 +2,6 @@
 
 import ResolvedApi from 'prismic-javascript/d.ts/ResolvedApi';
 import { Predicates } from 'prismic-javascript';
-import ApiSearchResponse from 'prismic-javascript/d.ts/ApiSearchResponse';
 
 const prismicJavascript: any = jest.genMockFromModule('prismic-javascript');
 

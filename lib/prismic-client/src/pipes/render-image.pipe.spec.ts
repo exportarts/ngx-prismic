@@ -1,4 +1,3 @@
-import { SpanType } from '../models/span.model';
 import { Paragraphs } from '../models/typography.model';
 import { RenderImagePipe } from './render-image.pipe';
 import { Image } from '../models/image.model';
