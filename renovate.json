@@ -2,7 +2,7 @@
   "extends": [
     "config:base"
   ],
-  "commitMessagePrefix": "Renovate:",
+  "commitMessagePrefix": "chore(deps):",
   "labels": [
     "dependencies"
   ],
