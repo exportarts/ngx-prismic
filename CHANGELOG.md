@@ -1,6 +1,10 @@
+## [1.10.2](https://github.com/exportarts/ngx-prismic/compare/v1.10.1...v1.10.2) (2020-05-24)
+
+Updated dependencies.
+
 ## [1.10.1](https://github.com/exportarts/ngx-prismic/compare/v1.10.0...v1.10.1) (2020-05-03)
 
-
+Updated dependencies.
 
 # [1.10.0](https://github.com/exportarts/ngx-prismic/compare/v1.9.1...v1.10.0) (2020-04-18)
 
@@ -177,6 +181,3 @@
 
 
 # 0.1.0 (2019-03-10)
-
-
-
