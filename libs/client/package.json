@@ -1,0 +1,30 @@
+{
+  "name": "@ngx-prismic/client",
+  "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
+  "version": "2.0.0",
+  "peerDependencies": {
+    "@angular/common": "^9.1.11",
+    "@angular/core": "^9.1.11",
+    "prismic-javascript": "^3.0.0",
+    "prismic-dom": "^2.2.3"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "author": {
+    "name": "Exportarts",
+    "email": "info@exportarts.io",
+    "url": "https://github.com/exportarts"
+  },
+  "contributors": [
+    {
+      "name": "Enzo Volkmann",
+      "email": "enzo@exportarts.io",
+      "url": "https://github.com/evolkmann"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exportarts/ngx-prismic"
+  }
+}

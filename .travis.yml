@@ -1,12 +1,12 @@
 language: node_js
-cache: yarn
+cache: npm
 node_js:
   - "10"
 script:
-  - yarn build:lib
+  - npm run build
 after_success:
-  - yarn test:cov
-  - yarn upload-cov
+  - npm run test:cov
+  - npm run upload-cov
   - sonar-scanner
 
 addons:

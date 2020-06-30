@@ -2,12 +2,12 @@
 
 ## 1. Change version
 
-Change the version in `package.json` and `lib/package.json`.
+Change the version in `package.json` and `libs/**/package.json`.
 
 ## 2. Build the library and update changelog
 
-- `yarn build:lib`
-- `yarn changelog`
+- `npm run build`
+- `npm run changelog`
 
 ## 3. Commit and Tag
 
@@ -18,5 +18,6 @@ Change the version in `package.json` and `lib/package.json`.
 
 ## 4. Publish library
 
-- `cd dist/lib`
-- `npm publish`
+The following command will publish all separate libraries
+
+- `npm run publish`
