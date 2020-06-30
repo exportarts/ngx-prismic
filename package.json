@@ -8,7 +8,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "nx": "nx",
     "start": "ng serve",
-    "build": "nx run-many --all --target build",
+    "build": "nx run-many --all --target build --prod",
     "test": "ng test",
     "test:cov": "nx run-many --all --target test --coverage",
     "lint": "nx workspace-lint && ng lint",
@@ -29,7 +29,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "upload-cov": "codecov",
-    "changelog": "standard-changelog"
+    "changelog": "standard-changelog",
+    "publish": "bash tools/scripts/publish.sh"
   },
   "private": true,
   "dependencies": {
