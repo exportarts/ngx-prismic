@@ -70,7 +70,7 @@
     "prismic-dom": "2.2.3",
     "prismic-javascript": "3.0.0",
     "standard-changelog": "2.0.24",
-    "ts-jest": "25.2.1",
+    "ts-jest": "25.5.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3"
