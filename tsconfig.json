@@ -1,25 +1,26 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "rootDirs": [
-      "./lib"
-    ]
-  }
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ngx-prismic/client": ["libs/client/src/index.ts"],
+      "@ngx-prismic/universal": ["libs/universal/src/index.ts"],
+      "@ngx-prismic/client": ["libs/client/src/index.ts"],
+      "@ngx-prismic/universal": ["libs/universal/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
 }

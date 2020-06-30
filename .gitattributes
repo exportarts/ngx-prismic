@@ -1,3 +1,3 @@
 # Ignore the demo-app in the src-folder from language statistics
 # since it is not part of the library itself
-demo/* linguist-vendored
+apps/* linguist-vendored
