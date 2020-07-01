@@ -1,7 +1,7 @@
 {
   "name": "ngx-prismic",
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
