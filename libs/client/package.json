@@ -9,7 +9,7 @@
     "prismic-dom": "^2.2.3"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "1.13.0"
   },
   "author": {
     "name": "Exportarts",
