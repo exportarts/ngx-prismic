@@ -1,3 +1,23 @@
+## [2.0.1](https://github.com/exportarts/ngx-prismic/compare/2.0.0...2.0.1) (2020-07-01)
+
+### Maintenance
+
+* update changelog and README
+
+
+# [2.0.0](https://github.com/exportarts/ngx-prismic/compare/1.10.2...2.0.0) (2020-06-30)
+
+### Code Refactoring
+
+* use nx monorepo and prismic-javascript@3.x ([06ba011](https://github.com/exportarts/ngx-prismic/commit/06ba0110d7d2feea9f8af06a868ab087674a7661))
+
+
+### BREAKING CHANGES
+
+* This commit introduces new package names as well as incompatibility with prismic-javascript@2.x
+
+
+
 ## [1.10.2](https://github.com/exportarts/ngx-prismic/compare/v1.10.1...v1.10.2) (2020-05-24)
 
 Updated dependencies.
