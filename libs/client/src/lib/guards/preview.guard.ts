@@ -1,5 +1,6 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Router } from '@angular/router';
 import Prismic from 'prismic-javascript';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';

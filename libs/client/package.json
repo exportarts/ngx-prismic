@@ -5,8 +5,11 @@
   "peerDependencies": {
     "@angular/common": "^9.1.11",
     "@angular/core": "^9.1.11",
+    "@angular/router": "^9.1.11",
+    "@angular/platform-browser": "^9.1.11",
     "prismic-javascript": "^3.0.0",
-    "prismic-dom": "^2.2.3"
+    "prismic-dom": "^2.2.3",
+    "rxjs": "^6.5.4"
   },
   "dependencies": {
     "tslib": "1.13.0"
