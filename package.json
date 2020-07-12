@@ -68,7 +68,7 @@
     "ng-packagr": "9.1.5",
     "prettier": "2.0.5",
     "prismic-dom": "2.2.3",
-    "prismic-javascript": "3.0.0",
+    "prismic-javascript": "3.0.1",
     "standard-changelog": "2.0.24",
     "ts-jest": "26.1.1",
     "ts-node": "7.0.1",
