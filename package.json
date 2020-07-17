@@ -57,7 +57,7 @@
     "@nrwl/jest": "9.5.1",
     "@nrwl/workspace": "9.5.1",
     "@types/jest": "26.0.4",
-    "@types/node": "8.9.5",
+    "@types/node": "8.10.61",
     "codecov": "3.7.0",
     "codelyzer": "5.2.2",
     "cypress": "4.10.0",
