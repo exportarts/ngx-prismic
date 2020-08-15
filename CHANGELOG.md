@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/exportarts/ngx-prismic/compare/2.0.2...2.1.0) (2020-08-15)
+
+
+### Bug Fixes
+
+* **http:** use HttpClient to allow Interceptors ([8629cab](https://github.com/exportarts/ngx-prismic/commit/8629cab193231a488aa0ad5dd0eb3fdbff3ac301))
+
+
+### Features
+
+* add CodeQL analysis ([6cb9d96](https://github.com/exportarts/ngx-prismic/commit/6cb9d96e7300e22fca18fed4fac93bd9166f92f8))
+
+
+
 ## [2.0.1](https://github.com/exportarts/ngx-prismic/compare/2.0.0...2.0.1) (2020-07-01)
 
 ### Maintenance
