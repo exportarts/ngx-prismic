@@ -1,4 +1,4 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import Prismic from 'prismic-javascript';
 import ResolvedApi, { QueryOptions } from 'prismic-javascript/types/ResolvedApi';
@@ -38,14 +38,12 @@ export const API_TOKEN = new InjectionToken<string>('API_TOKEN');
   providedIn: 'root'
 })
 export class PrismicService {
-  private readonly http: HttpClient;
 
   constructor(
-    private readonly httpBackend: HttpBackend,
+    private readonly http: HttpClient,
     @Inject(PrismicServiceConfigProvider) private readonly config: PrismicServiceConfig,
     @Inject(API_TOKEN) @Optional() private readonly apiToken: string
   ) {
-    this.http = new HttpClient(this.httpBackend);
     this.prefillWithApiToken();
   }
 
