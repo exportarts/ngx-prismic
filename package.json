@@ -58,7 +58,7 @@
     "@nrwl/workspace": "9.7.1",
     "@types/jest": "26.0.15",
     "@types/node": "8.10.66",
-    "codecov": "3.8.0",
+    "codecov": "3.8.1",
     "codelyzer": "5.2.2",
     "cypress": "4.12.1",
     "dotenv": "8.2.0",
