@@ -69,7 +69,7 @@
     "prettier": "2.1.2",
     "prismic-dom": "2.2.4",
     "prismic-javascript": "3.0.1",
-    "standard-changelog": "2.0.24",
+    "standard-changelog": "2.0.27",
     "ts-jest": "26.4.3",
     "ts-node": "7.0.1",
     "tslint": "6.1.3",
