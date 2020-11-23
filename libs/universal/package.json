@@ -3,8 +3,8 @@
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
   "version": "2.1.0",
   "peerDependencies": {
-    "@angular/common": "^9.1.11",
-    "@angular/core": "^9.1.11",
+    "@angular/common": "^9.1.11 || ^11.0.0",
+    "@angular/core": "^9.1.11 || ^11.0.0",
     "prismic-javascript": "^3.0.0",
     "rxjs": "^6.5.4"
   },
