@@ -3,16 +3,16 @@
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
   "version": "2.1.0",
   "peerDependencies": {
-    "@angular/common": "^9.1.11",
-    "@angular/core": "^9.1.11",
-    "@angular/router": "^9.1.11",
-    "@angular/platform-browser": "^9.1.11",
-    "prismic-javascript": "^3.0.0",
-    "prismic-dom": "^2.2.3",
-    "rxjs": "^6.5.4"
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@angular/router": "^11.0.0",
+    "@angular/platform-browser": "^11.0.0",
+    "prismic-javascript": "^3.0.2",
+    "prismic-dom": "^2.2.4",
+    "rxjs": "^6.6.3"
   },
   "dependencies": {
-    "tslib": "1.14.1"
+    "tslib": "2.0.3"
   },
   "author": {
     "name": "Exportarts",
