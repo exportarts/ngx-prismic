@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/exportarts/ngx-prismic/compare/v2.1.0...v3.0.0) (2020-11-24)
+
+
+### chore
+
+* **deps:** update to angular 11 ([#268](https://github.com/exportarts/ngx-prismic/issues/268)) ([b5849b8](https://github.com/exportarts/ngx-prismic/commit/b5849b8acf7b3e528c058ce3fc1c8dd9ebf6bdca))
+
+
+### BREAKING CHANGES
+
+* **deps:** The client and universal libs now require Angular 11+
+
+
+
 # [2.1.0](https://github.com/exportarts/ngx-prismic/compare/2.0.2...2.1.0) (2020-08-15)
 
 
