@@ -2,8 +2,9 @@ import { getPrismicUids } from './prismic-uids';
 import { RouteConfig, DEFAULT_EXTRA_OPTIONS, PrismicRoute } from './routes.model';
 
 /**
- * Use this function to get all routes inside the Angular application
- * which dependend on CMS-content from Prismic.
+ * Loads all documents with the provided doc types from Prismic,
+ * maps them with the provided mapping function and returns an array
+ * of routes that may be used for prerendering.
  * 
  * @param config Configuration to resolve and return all routes
  */
