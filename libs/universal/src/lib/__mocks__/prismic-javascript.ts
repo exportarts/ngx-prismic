@@ -1,8 +1,8 @@
 'use strict';
 
 import ResolvedApi from 'prismic-javascript/types/ResolvedApi';
-import Prismic from 'prismic-javascript';
 
+// @ts-ignore
 const prismicJavascript: any = jest.genMockFromModule('prismic-javascript');
 
 function getApi(url): Promise<Partial<ResolvedApi>> {
@@ -66,6 +66,6 @@ function getApi(url): Promise<Partial<ResolvedApi>> {
 prismicJavascript.getApi = getApi;
 
 // Keep Predicates the way they are
-prismicJavascript.Predicates = Prismic.Predicates;
+// prismicJavascript.Predicates = Prismic.Predicates;
 
-module.exports = prismicJavascript;
+export default prismicJavascript;

@@ -1,6 +1,6 @@
-import * as Prismic from 'prismic-javascript';
+import Prismic from 'prismic-javascript';
+import { Document } from 'prismic-javascript/types/documents';
 import { getPrismicUids } from './prismic-uids';
-import { Document } from 'prismic-javascript/d.ts/documents';
 
 describe('Prismic.getApi', () => {
     it('should return a Promise', async () => {
@@ -9,7 +9,7 @@ describe('Prismic.getApi', () => {
         expect(promise.then).toBeDefined();
         expect(promise.catch).toBeDefined();
     });
-    
+
     it('should return a Promise with a resolved api', async () => {
         const api = await Prismic.getApi('https://www.google.com');
         expect(api).toBeDefined();
