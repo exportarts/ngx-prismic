@@ -1,3 +1,8 @@
+## [3.0.1](https://github.com/exportarts/ngx-prismic/compare/v3.0.0...v3.0.1) (2021-01-10)
+
+Updated dependencies.
+
+
 # [3.0.0](https://github.com/exportarts/ngx-prismic/compare/v2.1.0...v3.0.0) (2020-11-24)
 
 
