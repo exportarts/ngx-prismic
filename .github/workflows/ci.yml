@@ -21,7 +21,7 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm run test:cov
-    - run: npm run upload-voc
+    - run: npm run upload-cov
     - name: SonarCloud Scan
       if: startsWith(matrix.node-version, '15')
       uses: sonarsource/sonarcloud-github-action@master
