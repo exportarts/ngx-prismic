@@ -69,7 +69,7 @@
     "jest-preset-angular": "8.3.2",
     "ng-packagr": "11.2.1",
     "prettier": "2.2.1",
-    "prismic-dom": "2.2.4",
+    "prismic-dom": "2.2.5",
     "prismic-javascript": "3.0.2",
     "standard-changelog": "2.0.27",
     "ts-jest": "26.5.0",
