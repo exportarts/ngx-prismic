@@ -12,7 +12,7 @@
     "rxjs": "^6.6.3"
   },
   "dependencies": {
-    "tslib": "2.1.0"
+    "tslib": "2.2.0"
   },
   "author": {
     "name": "Exportarts",
