@@ -9,7 +9,7 @@
     "@angular/platform-browser": "^11.0.0",
     "prismic-javascript": "^3.0.2",
     "prismic-dom": "^2.2.4",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3 || ^7.0.0"
   },
   "dependencies": {
     "tslib": "2.3.0"
