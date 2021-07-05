@@ -6,7 +6,7 @@
     "@angular/common": "^11.0.0",
     "@angular/core": "^11.0.0",
     "prismic-javascript": "^3.0.2",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3 || ^7.0.0"
   },
   "dependencies": {
     "tslib": "2.3.0"
