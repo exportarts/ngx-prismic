@@ -1,3 +1,12 @@
+# [4.1.0](https://github.com/exportarts/ngx-prismic/compare/v4.0.0...v4.1.0) (2021-12-26)
+
+
+### Features
+
+* **universal:** add `documentIds` option for generating routes ([4dddf15](https://github.com/exportarts/ngx-prismic/commit/4dddf15f2da03fcde2045bd93a4c972153a4c6c3))
+
+
+
 # [4.0.0](https://github.com/exportarts/ngx-prismic/compare/v3.0.1...v4.0.0) (2021-12-26)
 
 * **deps:** remove dependency to `prismic-dom` and `prismic-javascript`, use the new libs instead ([#365](https://github.com/exportarts/ngx-prismic/pull/365))
