@@ -1,4 +1,5 @@
-import { getPrismicUids } from './prismic-uids';
+import { PrismicDocument } from '@prismicio/types';
+import { getPrismicUids, resolveDocumentIds } from './prismic-uids';
 import { RouteConfig, DEFAULT_EXTRA_OPTIONS, PrismicRoute } from './routes.model';
 
 /**
@@ -16,8 +17,14 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
     const prismicRoutes: PrismicRoute[] = [];
 
     for (const docTypeConfig of config.docTypeConfigs) {
-        const metaDocuments = await getPrismicUids(config.repositoryName, docTypeConfig.documentType, config.includeDocumentData);
-        const mappedRoutes = metaDocuments.map(doc => {
+        let documents: PrismicDocument[];
+        if (Array.isArray(config.documentIds) && config.documentIds.length) {
+          documents = await resolveDocumentIds(config.repositoryName, docTypeConfig.documentType, config.documentIds, config.includeDocumentData);
+        } else {
+          documents = await getPrismicUids(config.repositoryName, docTypeConfig.documentType, config.includeDocumentData);
+        }
+
+        const mappedRoutes = documents.map(doc => {
             let resolvedRouteOrRoutes = docTypeConfig.uidMappingFunc(doc.uid, doc);
             if (!Array.isArray(resolvedRouteOrRoutes)) {
                 resolvedRouteOrRoutes = [resolvedRouteOrRoutes];

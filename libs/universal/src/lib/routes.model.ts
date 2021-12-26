@@ -28,6 +28,12 @@ export interface RouteConfig {
     repositoryName: string;
     docTypeConfigs: DocTypeConfig[];
     /**
+     * Only request specific documents that match these IDs.
+     *
+     * If not provided, all documents of the desired type will be fetched.
+     */
+    documentIds?: string[];
+    /**
      * Set this option to true to have the original Prismic document
      * returned in the PrismicRoute's meta attribute.
      */
