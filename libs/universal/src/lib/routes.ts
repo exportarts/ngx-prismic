@@ -19,7 +19,8 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
     for (const docTypeConfig of config.docTypeConfigs) {
         let documents: PrismicDocument[] = [];
         if (Array.isArray(config.documentIds) && config.documentIds.length) {
-          documents = await resolveDocumentIds(config.repositoryName, config.documentIds, config.includeDocumentData);
+          const resolved = await resolveDocumentIds(config.repositoryName, config.documentIds, config.includeDocumentData);
+          documents = resolved.filter(doc => doc.type === docTypeConfig.documentType);
 
           if (documents.length) {
             options.logFunc(`Resolved ${documents.length} document(s) by their ids:`);
@@ -27,7 +28,7 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
               options.logFunc(`${document.id} => ${document.uid}`);
             }
           } else {
-            options.logFunc(`Did not find any documents with the provided ids: ${JSON.stringify(config.documentIds)}`);
+            options.logFunc(`Did not find any documents of type "${docTypeConfig.documentType}" with the provided ids: ${JSON.stringify(config.documentIds)}`);
           }
 
         } else {
