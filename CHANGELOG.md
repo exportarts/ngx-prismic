@@ -1,3 +1,7 @@
+# [4.0.0](https://github.com/exportarts/ngx-prismic/compare/v3.0.1...v4.0.0) (2021-12-26)
+
+* **deps:** remove dependency to `prismic-dom` and `prismic-javascript`, use the new libs instead ([#365](https://github.com/exportarts/ngx-prismic/pull/365))
+
 ## [3.0.1](https://github.com/exportarts/ngx-prismic/compare/v3.0.0...v3.0.1) (2021-01-10)
 
 Updated dependencies.
