@@ -108,7 +108,8 @@ describe('RenderHtmlPipe', () => {
                             type: RichTextNodeType.hyperlink,
                             data: {
                                 link_type: 'Web',
-                                url: 'https://google.com'
+                                url: 'https://google.com',
+                                target: '_blank'
                             }
                         }
                     ],
@@ -117,7 +118,7 @@ describe('RenderHtmlPipe', () => {
             ];
 
             const rendered = pipe.transform(paragraphs);
-            expect(rendered).toEqual('<p><a  href="https://google.com">Link</a> to Google</p>');
+            expect(rendered).toEqual('<p><a href="https://google.com" target="_blank" rel="noopener nofereffer">Link</a> to Google</p>');
         });
 
         test('Paragraph with link and target blank', () => {
@@ -141,7 +142,7 @@ describe('RenderHtmlPipe', () => {
             ];
 
             const rendered = pipe.transform(paragraphs);
-            expect(rendered).toEqual('<p><a target="_blank" rel="noopener" href="https://google.com">Link</a> to Google</p>');
+            expect(rendered).toEqual('<p><a href="https://google.com" target="_blank" rel="noopener noreferrer">Link</a> to Google</p>');
         });
     });
 
@@ -183,7 +184,7 @@ describe('RenderHtmlPipe', () => {
                 }
             ];
             const serializer: HTMLMapSerializer = {
-              em: ({ text }) => `<span>${text}</span>`
+              em: ({ children }) => `<span>${children}</span>`
             }
 
             const rendered = pipe.transform(paragraphs, serializer);
