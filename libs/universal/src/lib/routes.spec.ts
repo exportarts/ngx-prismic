@@ -6,7 +6,7 @@ describe('getRoutes', () => {
     let options: NgxPrismicExtraOptions;
     beforeEach(() => {
         config = {
-            prismicApiUrl: 'https://www.google.com',
+            repositoryName: 'https://www.google.com',
             docTypeConfigs: [
                 {
                     documentType: 'intro',
@@ -58,7 +58,7 @@ describe('getRoutes', () => {
         const routes = await getRoutes(config, options);
         expect(routes).toBeDefined();
         expect(routes.length).toEqual(2);
-        expect((routes[0].meta as any).data).toBeUndefined();
+        expect((routes[0].doc as any).data).toBeUndefined();
         expect(routes[0].route.includes('english')).toEqual(true);
         expect(routes[1].route.includes('english')).toEqual(true);
     });
@@ -69,7 +69,7 @@ describe('getRoutes', () => {
         const routes = await getRoutes(config, options);
         expect(routes).toBeDefined();
         expect(routes.length).toEqual(2);
-        expect((routes[0].meta as any).data).toBeDefined();
+        expect((routes[0].doc as any).data).toBeDefined();
         expect(routes[0].route.includes('english')).toEqual(true);
         expect(routes[1].route.includes('english')).toEqual(true);
     });

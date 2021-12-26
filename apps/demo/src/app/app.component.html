@@ -1,4 +1,20 @@
-<p>
-  This data comes from prismic:
-</p>
-<pre>{{data | async | json}}</pre>
+<ng-container *ngIf="data | async as response; else loading">
+  <p>
+    This is the raw data from prismic.
+  </p>
+  <pre>{{response | json}}</pre>
+
+  <hr>
+
+  <p>
+    This is an example of using the
+    <code>renderHtml</code> pipe
+    with the <code>.[0].data.richtext</code>
+    field in the response above.
+  </p>
+  <div [innerHTML]="response[0].data.richtext | renderHtml | safe : 'html'"></div>
+</ng-container>
+
+<ng-template #loading>
+  please wait...
+</ng-template>

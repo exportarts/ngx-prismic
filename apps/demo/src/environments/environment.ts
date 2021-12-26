@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { createClient, getEndpoint } from '@prismicio/client';
+
 export const environment = {
   production: false,
+  prismic: {
+    client: createClient(getEndpoint('ngx-prismic-demo'))
+  }
 };
 
 /*

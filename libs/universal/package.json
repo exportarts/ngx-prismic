@@ -5,7 +5,8 @@
   "peerDependencies": {
     "@angular/common": "^11.0.0",
     "@angular/core": "^11.0.0",
-    "prismic-javascript": "^3.0.2",
+    "@prismicio/client": "^6.0.0-beta.5",
+    "@prismicio/helpers": "^2.0.0-beta.8",
     "rxjs": "^6.6.3"
   },
   "dependencies": {

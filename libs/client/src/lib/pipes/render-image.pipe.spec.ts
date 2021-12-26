@@ -1,6 +1,5 @@
-import { Paragraphs } from '../models/typography.model';
+import { ImageField, RichTextField } from '@prismicio/types';
 import { RenderImagePipe } from './render-image.pipe';
-import { Image } from '../models/image.model';
 
 describe('RenderImagePipe', () => {
     let pipe: RenderImagePipe;
@@ -10,7 +9,7 @@ describe('RenderImagePipe', () => {
 
     describe('tranform()', () => {
         test('Simple image', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -25,7 +24,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with alt', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -40,7 +39,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with title', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -56,7 +55,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with alt and title', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -72,7 +71,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with title and classes', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -89,7 +88,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with alt, title and classes', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -106,7 +105,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with title, classes and caption', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -117,7 +116,7 @@ describe('RenderImagePipe', () => {
             };
             const title = 'my photo';
             const classes = 'my-image'
-            const caption: Paragraphs = [
+            const caption: RichTextField = [
                 {
                     text: 'Check out my pic',
                     spans: [],
@@ -130,7 +129,7 @@ describe('RenderImagePipe', () => {
         });
 
         test('Image with alt, title, classes and caption', () => {
-            const image: Image = {
+            const image: ImageField = {
                 url: 'photo.jpg',
                 dimensions: {
                     height: 100,
@@ -141,7 +140,7 @@ describe('RenderImagePipe', () => {
             };
             const title = 'my photo';
             const classes = 'my-image'
-            const caption: Paragraphs = [
+            const caption: RichTextField = [
                 {
                     text: 'Check out my pic',
                     spans: [],
@@ -153,5 +152,5 @@ describe('RenderImagePipe', () => {
             expect(rendered).toEqual('<figure><img class="my-image" alt="test" title="my photo" src="photo.jpg"><figcaption><p>Check out my pic</p></figcaption></figure>')
         });
     });
-    
+
 });

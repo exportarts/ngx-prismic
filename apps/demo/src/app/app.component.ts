@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PrismicService } from '@ngx-prismic/client';
-import { Observable } from 'rxjs';
-import Prismic from 'prismic-javascript';
+import { PrismicDocument } from '@prismicio/types';
+import { from, Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'ngx-prismic-root',
@@ -10,16 +10,10 @@ import Prismic from 'prismic-javascript';
 })
 export class AppComponent implements OnInit {
 
-  data: Observable<any>;
-  
-  constructor(
-    private readonly prismic: PrismicService
-  ) {}
+  data: Observable<PrismicDocument[]>;
 
   ngOnInit() {
-    this.data = this.prismic.query([
-      Prismic.Predicates.at('document.type', 'demo')
-    ]);
+    this.data = from(environment.prismic.client.getAllByType('demo'));
   }
-  
+
 }

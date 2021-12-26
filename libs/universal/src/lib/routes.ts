@@ -5,8 +5,9 @@ import { RouteConfig, DEFAULT_EXTRA_OPTIONS, PrismicRoute } from './routes.model
  * Loads all documents with the provided doc types from Prismic,
  * maps them with the provided mapping function and returns an array
  * of routes that may be used for prerendering.
- * 
+ *
  * @param config Configuration to resolve and return all routes
+ * @param options Specify optional configuration
  */
 export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPTIONS): Promise<PrismicRoute[]> {
     options.logFunc('Starting to collect routes\n');
@@ -15,7 +16,7 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
     const prismicRoutes: PrismicRoute[] = [];
 
     for (const docTypeConfig of config.docTypeConfigs) {
-        const metaDocuments = await getPrismicUids(config.prismicApiUrl, docTypeConfig.documentType, config.includeDocumentData);
+        const metaDocuments = await getPrismicUids(config.repositoryName, docTypeConfig.documentType, config.includeDocumentData);
         const mappedRoutes = metaDocuments.map(doc => {
             let resolvedRouteOrRoutes = docTypeConfig.uidMappingFunc(doc.uid, doc);
             if (!Array.isArray(resolvedRouteOrRoutes)) {
@@ -24,7 +25,7 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
 
             const resolvedRoutes: PrismicRoute[] = resolvedRouteOrRoutes.map(route => ({
                 route,
-                meta: doc
+                doc
             }));
 
             return resolvedRoutes;
@@ -40,12 +41,12 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
 
 /**
  * Flattens an array up to the specified depth.
- * 
+ *
  * Use recursion, decrementing depth by 1 for each level of depth.
  * Use Array.prototype.reduce() and Array.prototype.concat() to merge
  * elements or arrays. Base case, for depth equal to 1 stops recursion.
  * Omit the second argument, depth to flatten only to a depth of 1 (single flatten).
- * 
+ *
  * From: https://30secondsofcode.org/#flatten
  */
 function flatten(arr, depth = 1) {
