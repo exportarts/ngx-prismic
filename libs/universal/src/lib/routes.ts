@@ -17,9 +17,19 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
     const prismicRoutes: PrismicRoute[] = [];
 
     for (const docTypeConfig of config.docTypeConfigs) {
-        let documents: PrismicDocument[];
+        let documents: PrismicDocument[] = [];
         if (Array.isArray(config.documentIds) && config.documentIds.length) {
-          documents = await resolveDocumentIds(config.repositoryName, docTypeConfig.documentType, config.documentIds, config.includeDocumentData);
+          documents = await resolveDocumentIds(config.repositoryName, config.documentIds, config.includeDocumentData);
+
+          if (documents.length) {
+            options.logFunc(`Resolved ${documents.length} document(s) by their ids:`);
+            for (const document of documents) {
+              options.logFunc(`${document.id} => ${document.uid}`);
+            }
+          } else {
+            options.logFunc(`Did not find any documents with the provided ids: ${JSON.stringify(config.documentIds)}`);
+          }
+
         } else {
           documents = await getPrismicUids(config.repositoryName, docTypeConfig.documentType, config.includeDocumentData);
         }
