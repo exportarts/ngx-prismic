@@ -1,3 +1,12 @@
+## [4.1.2](https://github.com/exportarts/ngx-prismic/compare/v4.1.1...v4.1.2) (2021-12-26)
+
+
+### Bug Fixes
+
+* **universal:** only resolve docs by id that match the requested document type ([5207c53](https://github.com/exportarts/ngx-prismic/commit/5207c53e65beddca302ab2d48efc395ce70584a5))
+
+
+
 ## [4.1.1](https://github.com/exportarts/ngx-prismic/compare/v4.1.0...v4.1.1) (2021-12-26)
 
 

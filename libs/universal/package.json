@@ -1,7 +1,7 @@
 {
   "name": "@ngx-prismic/universal",
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "peerDependencies": {
     "@prismicio/client": "^6.0.0-beta.5",
     "@prismicio/helpers": "^2.0.0-beta.8",
