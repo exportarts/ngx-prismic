@@ -1,13 +1,5 @@
-import { BuildQueryURLArgs, Client, createClient, getEndpoint } from '@prismicio/client';
-
-let _client: Client;
-function getClient(repository: string) {
-  if (!_client) {
-    const endpoint = getEndpoint(repository);
-    _client = createClient(endpoint);
-  }
-  return _client;
-}
+import { BuildQueryURLArgs, createClient, getEndpoint } from '@prismicio/client';
+import fetch from 'node-fetch';
 
 /**
  * Recursively loads all available UIDs for a specific docType
@@ -18,7 +10,10 @@ function getClient(repository: string) {
  * @param includeData Whether to include the full document data, nut just metadata
  */
 export async function getPrismicUids(repositoryName: string, docType: string, includeData = false) {
-  const client = getClient(repositoryName);
+  const endpoint = getEndpoint(repositoryName);
+  const client = createClient(endpoint, {
+    fetch
+  });
   const options: Partial<Omit<BuildQueryURLArgs, 'page'>> = {};
 
   if (!includeData) {

@@ -118,7 +118,7 @@ describe('RenderHtmlPipe', () => {
             ];
 
             const rendered = pipe.transform(paragraphs);
-            expect(rendered).toEqual('<p><a href="https://google.com" target="_blank" rel="noopener nofereffer">Link</a> to Google</p>');
+            expect(rendered).toEqual('<p><a href="https://google.com" target="_blank" rel="noopener noreferrer">Link</a> to Google</p>');
         });
 
         test('Paragraph with link and target blank', () => {
