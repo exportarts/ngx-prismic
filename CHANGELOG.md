@@ -1,3 +1,12 @@
+## [4.1.1](https://github.com/exportarts/ngx-prismic/compare/v4.1.0...v4.1.1) (2021-12-26)
+
+
+### Bug Fixes
+
+* **universal:** fix id resolver (do not filter by type) ([3ea0ff4](https://github.com/exportarts/ngx-prismic/commit/3ea0ff4ac6564e907d3389595a87a205dca6c506))
+
+
+
 # [4.1.0](https://github.com/exportarts/ngx-prismic/compare/v4.0.0...v4.1.0) (2021-12-26)
 
 
