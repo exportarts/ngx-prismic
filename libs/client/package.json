@@ -7,8 +7,8 @@
     "@angular/core": "^11.0.0",
     "@angular/router": "^11.0.0",
     "@angular/platform-browser": "^11.0.0",
-    "prismic-javascript": "^3.0.2",
-    "prismic-dom": "^2.2.4",
+    "@prismicio/client": "^6.0.0-beta.5",
+    "@prismicio/helpers": "^2.0.0-beta.8",
     "rxjs": "^6.6.3"
   },
   "dependencies": {

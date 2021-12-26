@@ -1,9 +1,9 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { PrismicClientModule } from '@ngx-prismic/client';
 import { AppComponent } from './app.component';
 import { DemoInterceptor } from './interceptor';
-import { PrismicModule } from './prismic/prismic.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { PrismicModule } from './prismic/prismic.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    PrismicModule
+    PrismicClientModule
   ],
   providers: [
     {

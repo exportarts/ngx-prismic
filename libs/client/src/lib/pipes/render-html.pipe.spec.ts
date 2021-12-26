@@ -1,6 +1,6 @@
-import { SpanType } from '../models/span.model';
-import { Paragraphs } from '../models/typography.model';
-import { RenderHtmlPipe, HtmlSerializer } from './render-html.pipe';
+import { HTMLFunctionSerializer, HTMLMapSerializer } from '@prismicio/helpers';
+import { RichTextField, RichTextNodeType } from '@prismicio/types';
+import { RenderHtmlPipe } from './render-html.pipe';
 
 describe('RenderHtmlPipe', () => {
     let pipe: RenderHtmlPipe;
@@ -18,7 +18,7 @@ describe('RenderHtmlPipe', () => {
         });
 
         test('Simple paragraph without formatting', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'This is a simple paragraph',
                     spans: [],
@@ -31,7 +31,7 @@ describe('RenderHtmlPipe', () => {
         });
 
         test('Two paragraphs without formatting', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'Part 1',
                     spans: [],
@@ -49,14 +49,14 @@ describe('RenderHtmlPipe', () => {
         });
 
         test('Paragraph with formatting', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'Bold Normal',
                     spans: [
                         {
                             start: 0,
                             end: 4,
-                            type: SpanType.STRONG
+                            type: RichTextNodeType.strong
                         }
                     ],
                     type: 'paragraph'
@@ -68,14 +68,14 @@ describe('RenderHtmlPipe', () => {
         });
 
         test('Paragraphs with multiple formatting', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'Bold Normal',
                     spans: [
                         {
                             start: 0,
                             end: 4,
-                            type: SpanType.STRONG
+                            type: RichTextNodeType.strong
                         }
                     ],
                     type: 'paragraph'
@@ -86,7 +86,7 @@ describe('RenderHtmlPipe', () => {
                         {
                             start: 0,
                             end: 6,
-                            type: SpanType.EM
+                            type: RichTextNodeType.em
                         }
                     ],
                     type: 'paragraph'
@@ -98,37 +98,14 @@ describe('RenderHtmlPipe', () => {
         });
 
         test('Paragraph with link', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'Link to Google',
                     spans: [
                         {
                             start: 0,
                             end: 4,
-                            type: SpanType.HYPERLINK,
-                            data: {
-                                link_type: 'Web',
-                                url: 'https://google.com'
-                            }
-                        }
-                    ],
-                    type: 'paragraph'
-                }
-            ];
-
-            const rendered = pipe.transform(paragraphs);
-            expect(rendered).toEqual('<p><a  href="https://google.com">Link</a> to Google</p>');
-        });
-
-        test('Paragraph with link and target blank', () => {
-            const paragraphs: Paragraphs = [
-                {
-                    text: 'Link to Google',
-                    spans: [
-                        {
-                            start: 0,
-                            end: 4,
-                            type: SpanType.HYPERLINK,
+                            type: RichTextNodeType.hyperlink,
                             data: {
                                 link_type: 'Web',
                                 url: 'https://google.com',
@@ -141,26 +118,50 @@ describe('RenderHtmlPipe', () => {
             ];
 
             const rendered = pipe.transform(paragraphs);
-            expect(rendered).toEqual('<p><a target="_blank" rel="noopener" href="https://google.com">Link</a> to Google</p>');
+            expect(rendered).toEqual('<p><a href="https://google.com" target="_blank" rel="noopener noreferrer">Link</a> to Google</p>');
+        });
+
+        test('Paragraph with link and target blank', () => {
+            const paragraphs: RichTextField = [
+                {
+                    text: 'Link to Google',
+                    spans: [
+                        {
+                            start: 0,
+                            end: 4,
+                            type: RichTextNodeType.hyperlink,
+                            data: {
+                                link_type: 'Web',
+                                url: 'https://google.com',
+                                target: '_blank'
+                            }
+                        }
+                    ],
+                    type: 'paragraph'
+                }
+            ];
+
+            const rendered = pipe.transform(paragraphs);
+            expect(rendered).toEqual('<p><a href="https://google.com" target="_blank" rel="noopener noreferrer">Link</a> to Google</p>');
         });
     });
 
     describe('With Resolver', () => {
         test('Should override everything', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'This is a simple paragraph',
                     spans: [
                         {
                             start: 0,
                             end: 10,
-                            type: SpanType.EM
+                            type: RichTextNodeType.em
                         }
                     ],
                     type: 'paragraph'
                 }
             ];
-            const serializer: HtmlSerializer = (type, element, content, children) => {
+            const serializer: HTMLFunctionSerializer = (type, element, content, children) => {
                 return 'static content';
             }
 
@@ -169,28 +170,26 @@ describe('RenderHtmlPipe', () => {
         });
 
         test('Should override certain spans', () => {
-            const paragraphs: Paragraphs = [
+            const paragraphs: RichTextField = [
                 {
                     text: 'This is a simple paragraph',
                     spans: [
                         {
                             start: 0,
                             end: 7,
-                            type: SpanType.EM
+                            type: RichTextNodeType.em
                         }
                     ],
                     type: 'paragraph'
                 }
             ];
-            const serializer: HtmlSerializer = (type, element, content, children) => {
-                switch (type) {
-                    case 'em': return `<span>${content}</span>`;
-                }
+            const serializer: HTMLMapSerializer = {
+              em: ({ children }) => `<span>${children}</span>`
             }
 
             const rendered = pipe.transform(paragraphs, serializer);
             expect(rendered).toEqual('<p><span>This is</span> a simple paragraph</p>');
         });
     })
-    
+
 });

@@ -1,5 +1,4 @@
-import { DocumentMetadata } from './prismic-uids';
-import { Document } from 'prismic-javascript/types/documents';
+import { PrismicDocument } from '@prismicio/types';
 
 /**
  * Defines the relationship between a Prismic custom type
@@ -13,21 +12,20 @@ export interface DocTypeConfig {
     /**
      * This function takes the UID of a Prismic document and
      * must return the absolute path to render this document.
-     * 
-     * Additionally, the complete document metadata can be used
+     *
+     * Additionally, the complete document can be used
      * to determine the route.
      */
-    uidMappingFunc: (uid: string, meta?: DocumentMetadata) => string | string[];
+    uidMappingFunc: (uid: string, meta?: PrismicDocument) => string | string[];
 }
 
 export interface RouteConfig {
     /**
-     * Your repository's API URL.
-     * You can find this string at Settings > API & Security > API Endpoint.
-     * 
-     * Please note that only Prismic API v2 is supported.
+     * Your repository name.
+     *
+     * The part of the URL before `.prismic.io`.
      */
-    prismicApiUrl: string;
+    repositoryName: string;
     docTypeConfigs: DocTypeConfig[];
     /**
      * Set this option to true to have the original Prismic document
@@ -44,7 +42,7 @@ export interface PrismicRoute {
     /**
      * Additional metadata.
      */
-    meta: DocumentMetadata | Document;
+    doc: PrismicDocument;
 }
 
 export interface NgxPrismicExtraOptions {
