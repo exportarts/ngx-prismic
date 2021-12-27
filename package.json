@@ -70,7 +70,7 @@
     "codecov": "3.8.3",
     "codelyzer": "6.0.2",
     "cypress": "4.12.1",
-    "dotenv": "8.6.0",
+    "dotenv": "10.0.0",
     "eslint": "7.30.0",
     "jest": "27.4.5",
     "jest-preset-angular": "11.0.1",
