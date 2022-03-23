@@ -1,3 +1,12 @@
+# [4.2.0](https://github.com/exportarts/ngx-prismic/compare/v4.1.2...v4.2.0) (2022-03-23)
+
+
+### Features
+
+* **universal:** add additional config for `getRoutes()` ([48e5a01](https://github.com/exportarts/ngx-prismic/commit/48e5a019900fe5489dd55af914eb111ac9694fb2))
+
+
+
 ## [4.1.2](https://github.com/exportarts/ngx-prismic/compare/v4.1.1...v4.1.2) (2021-12-26)
 
 
