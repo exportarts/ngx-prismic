@@ -27,20 +27,34 @@ export async function getPrismicUids(repositoryName: string, docType: string, in
   return client.getAllByType(docType, options);
 }
 
+type AllowedBuildQueryURLArgs = Partial<Omit<BuildQueryURLArgs, 'page'>>;
+
+export interface ResolveDocumentIdsConfig {
+  /**
+   * The Prismic API URL (v2 only)
+   */
+  repositoryName: string;
+  /**
+   * The technical document ids (not uids) from prismic
+   */
+  documentIds: string[];
+  /**
+   * Whether to include the full document data, nut just metadata
+   */
+  includeDocumentData?: boolean;
+  additionalConfig?: AllowedBuildQueryURLArgs;
+}
+
 /**
  * Fetches prismic documents by their ids.
- *
- * @param repositoryName The Prismic API URL (v2 only)
- * @param documentIds the technical document ids (not uids) from prismic
- * @param includeData Whether to include the full document data, nut just metadata
  */
-export async function resolveDocumentIds(repositoryName: string, documentIds: string[], includeData = false) {
-  const client = getClient(repositoryName);
-  const options: Partial<Omit<BuildQueryURLArgs, 'page'>> = {};
+export async function resolveDocumentIds(config: ResolveDocumentIdsConfig) {
+  const client = getClient(config.repositoryName);
+  const options: AllowedBuildQueryURLArgs = config.additionalConfig || {};
 
-  if (!includeData) {
+  if (!config.includeDocumentData) {
     options.fetch = null; // Don't query document data by default
   }
 
-  return client.getAllByIDs(documentIds, options);
+  return client.getAllByIDs(config.documentIds, options);
 }

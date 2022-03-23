@@ -1,4 +1,5 @@
 import { PrismicDocument } from '@prismicio/types';
+import { ResolveDocumentIdsConfig } from './prismic-uids';
 
 /**
  * Defines the relationship between a Prismic custom type
@@ -38,6 +39,7 @@ export interface RouteConfig {
      * returned in the PrismicRoute's meta attribute.
      */
     includeDocumentData?: boolean;
+    additionalConfig?: ResolveDocumentIdsConfig['additionalConfig'];
 }
 
 export interface PrismicRoute {
