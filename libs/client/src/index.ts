@@ -5,3 +5,4 @@ export { SafePipe } from './lib/pipes/safe.pipe';
 export { RenderImagePipe } from './lib/pipes/render-image.pipe';
 
 export * from './lib/guards/preview.guard';
+export * from './lib/utils/preview';
