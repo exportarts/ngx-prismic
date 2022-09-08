@@ -1,3 +1,12 @@
+# [4.3.0](https://github.com/exportarts/ngx-prismic/compare/v4.2.0...v4.3.0) (2022-09-08)
+
+
+### Features
+
+* **client:** add preview utils ([d93bf61](https://github.com/exportarts/ngx-prismic/commit/d93bf61a451e7e090fce7faf0820a89c3426a5be))
+
+
+
 # [4.2.0](https://github.com/exportarts/ngx-prismic/compare/v4.1.2...v4.2.0) (2022-03-23)
 
 
