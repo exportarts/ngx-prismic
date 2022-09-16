@@ -1,3 +1,12 @@
+## [4.4.1](https://github.com/exportarts/ngx-prismic/compare/v4.4.0...v4.4.1) (2022-09-16)
+
+
+### Bug Fixes
+
+* **preview:** correctly check `enabled` flag ([8edb451](https://github.com/exportarts/ngx-prismic/commit/8edb45120a0ce348bbf6b678d6628572550edaed))
+
+
+
 # [4.4.0](https://github.com/exportarts/ngx-prismic/compare/v4.3.0...v4.4.0) (2022-09-08)
 
 
