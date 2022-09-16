@@ -12,13 +12,15 @@ export async function handlePreview(
   enabled = true
 ): Promise<void> {
   if (!enabled) {
-    const toolbarScript = document.createElement('script');
-    toolbarScript.setAttribute('async', 'async');
-    toolbarScript.setAttribute('defer', 'defer');
-    toolbarScript.setAttribute('src', `https://static.cdn.prismic.io/prismic.js?new=true&repo=${repoName}`);
-    const body = document.getElementsByTagName('body').item(0);
-    body?.appendChild(toolbarScript);
+    return;
   }
+
+  const toolbarScript = document.createElement('script');
+  toolbarScript.setAttribute('async', 'async');
+  toolbarScript.setAttribute('defer', 'defer');
+  toolbarScript.setAttribute('src', `https://static.cdn.prismic.io/prismic.js?new=true&repo=${repoName}`);
+  const body = document.getElementsByTagName('body').item(0);
+  body?.appendChild(toolbarScript);
 
   const isManualRef = ((client as any)?.refState?.mode || '').toLowerCase() === 'manual';
   if (isManualRef) {
