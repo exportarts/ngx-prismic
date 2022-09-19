@@ -37,7 +37,12 @@ export async function getRoutes(config: RouteConfig, options = DEFAULT_EXTRA_OPT
           }
 
         } else {
-          documents = await getPrismicUids(config.repositoryName, docTypeConfig.documentType, config.includeDocumentData);
+          documents = await getPrismicUids(
+            config.repositoryName,
+            docTypeConfig.documentType,
+            config.includeDocumentData,
+            config.additionalConfig
+          );
         }
 
         const mappedRoutes = documents.map(doc => {

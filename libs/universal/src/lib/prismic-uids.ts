@@ -15,10 +15,16 @@ function getClient(repositoryName: string) {
  * @param repositoryName The Prismic API URL (v2 only)
  * @param docType The API-name of the document type to fetch
  * @param includeData Whether to include the full document data, nut just metadata
+ * @param additionalConfig Additional options to query the api
  */
-export async function getPrismicUids(repositoryName: string, docType: string, includeData = false) {
+export async function getPrismicUids(
+  repositoryName: string,
+  docType: string,
+  includeData = false,
+  additionalConfig: AllowedBuildQueryURLArgs = {}
+) {
   const client = getClient(repositoryName);
-  const options: Partial<Omit<BuildQueryURLArgs, 'page'>> = {};
+  const options: Partial<Omit<BuildQueryURLArgs, 'page'>> = additionalConfig;
 
   if (!includeData) {
     options.fetch = null; // Don't query document data by default
