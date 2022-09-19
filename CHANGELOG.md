@@ -1,3 +1,12 @@
+## [4.4.2](https://github.com/exportarts/ngx-prismic/compare/v4.4.1...v4.4.2) (2022-09-19)
+
+
+### Bug Fixes
+
+* **universal:** respect `additionalOptions` when not passing `documentIds` ([1ebff5b](https://github.com/exportarts/ngx-prismic/commit/1ebff5b7786c4eb2862500f2e6bb8d89ff1c1a92))
+
+
+
 ## [4.4.1](https://github.com/exportarts/ngx-prismic/compare/v4.4.0...v4.4.1) (2022-09-16)
 
 
