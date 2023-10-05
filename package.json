@@ -76,7 +76,7 @@
     "jest-preset-angular": "11.0.1",
     "ng-packagr": "12.2.7",
     "node-fetch": "3.1.0",
-    "prettier": "2.2.1",
+    "prettier": "2.8.8",
     "standard-changelog": "2.0.27",
     "ts-jest": "27.1.2",
     "ts-node": "9.1.1",
