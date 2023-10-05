@@ -1,3 +1,7 @@
+## [4.4.2](https://github.com/exportarts/ngx-prismic/compare/v4.5.0...v4.4.2) (2023-10-05)
+
+
+
 ## [4.4.2](https://github.com/exportarts/ngx-prismic/compare/v4.4.1...v4.4.2) (2022-09-19)
 
 
