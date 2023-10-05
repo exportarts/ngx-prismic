@@ -1,8 +1,8 @@
-import { BuildQueryURLArgs, createClient, getEndpoint, predicate } from '@prismicio/client';
+import {BuildQueryURLArgs, createClient, getRepositoryEndpoint} from '@prismicio/client';
 import fetch from 'node-fetch';
 
 function getClient(repositoryName: string) {
-  const endpoint = getEndpoint(repositoryName);
+  const endpoint = getRepositoryEndpoint(repositoryName);
   return createClient(endpoint, {
     fetch
   });

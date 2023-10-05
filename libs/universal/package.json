@@ -1,12 +1,11 @@
 {
   "name": "@ngx-prismic/universal",
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
-  "version": "4.4.2",
+  "version": "4.5.0",
   "peerDependencies": {
-    "@prismicio/client": "^6.0.0-beta.5",
-    "@prismicio/helpers": "^2.0.0-beta.8",
-    "rxjs": "^6.6.3",
-    "node-fetch": "^3.1.0"
+    "@prismicio/client": "^7.2.0",
+    "node-fetch": "^3.1.0",
+    "rxjs": "^6.6.3"
   },
   "dependencies": {
     "tslib": "2.3.0"
