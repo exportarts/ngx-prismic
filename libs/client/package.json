@@ -3,10 +3,10 @@
   "description": "This project is intended to provide easier integration of prismic.io into Angular Projects.",
   "version": "4.4.2",
   "peerDependencies": {
-    "@angular/common": "^11.0.0",
-    "@angular/core": "^11.0.0",
-    "@angular/router": "^11.0.0",
-    "@angular/platform-browser": "^11.0.0",
+    "@angular/common": "^11.0.0 || ^18.0.0",
+    "@angular/core": "^11.0.0 || ^18.0.0",
+    "@angular/router": "^11.0.0 || ^18.0.0",
+    "@angular/platform-browser": "^11.0.0 || ^18.0.0",
     "@prismicio/client": "^6.0.0-beta.5",
     "@prismicio/helpers": "^2.0.0-beta.8",
     "rxjs": "^6.6.3"
