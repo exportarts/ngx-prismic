@@ -44,7 +44,7 @@
     "@angular/router": "12.2.17",
     "@nrwl/angular": "11.2.10",
     "rxjs": "6.6.7",
-    "tslib": "2.3.0",
+    "tslib": "2.8.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
