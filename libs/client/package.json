@@ -9,7 +9,7 @@
     "@angular/platform-browser": "^11.0.0",
     "@prismicio/client": "^6.0.0-beta.5",
     "@prismicio/helpers": "^2.0.0-beta.8",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3 || ^7.0.0"
   },
   "dependencies": {
     "tslib": "2.3.0"
