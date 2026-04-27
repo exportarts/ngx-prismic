@@ -61,7 +61,7 @@
     "@nrwl/jest": "11.2.10",
     "@nrwl/tao": "11.2.10",
     "@nrwl/workspace": "11.2.10",
-    "@prismicio/client": "6.0.0-beta.5",
+    "@prismicio/client": "6.9.0",
     "@prismicio/helpers": "2.0.0-beta.8",
     "@prismicio/types": "0.1.21",
     "@types/jest": "27.0.3",
