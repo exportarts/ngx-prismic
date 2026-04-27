@@ -75,7 +75,7 @@
     "jest": "27.4.5",
     "jest-preset-angular": "11.0.1",
     "ng-packagr": "12.2.7",
-    "node-fetch": "3.1.0",
+    "node-fetch": "3.1.1",
     "prettier": "2.2.1",
     "standard-changelog": "2.0.27",
     "ts-jest": "27.1.2",
